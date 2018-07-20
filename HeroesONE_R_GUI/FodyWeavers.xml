@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Weavers>
+  <Costura>
+    <Costura IncludeDebugSymbols='false' />
+    <Unmanaged32Assemblies>
+      dlang-prs
+    </Unmanaged32Assemblies>
+  </Costura>
+</Weavers>

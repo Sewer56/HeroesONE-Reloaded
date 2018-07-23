@@ -484,5 +484,29 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
             }
         }
+
+        /// <summary>
+        /// Cause the data to be copied from the source to the target.
+        /// </summary>
+        private void FileList_DragEnter(object sender, DragEventArgs e)
+        {
+            // Contains the paths to the individual files.
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        /// <summary>
+        /// Get the file paths of the files that were dropped onto the archiver windows.
+        /// </summary>
+        private void FileList_DragDrop(object sender, DragEventArgs e)
+        {
+            // Contains the paths to the individual files.
+            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            foreach (string filePath in filePaths)
+            { Archive.Files.Add(new ArchiveFile(filePath)); }
+            UpdateGUI(ref Archive);
+        }
     }
 }

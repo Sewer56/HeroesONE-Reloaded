@@ -49,7 +49,7 @@
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <LangVersion>default</LangVersion>
-    <OutputPath>C:\Users\sewer\Desktop\Github\HeroesONE++\HeroesONE++\build\</OutputPath>
+    <OutputPath>..\build\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|x64'">

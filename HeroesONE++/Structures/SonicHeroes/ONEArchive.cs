@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
+using HeroesONE_R.Structures.Subsctructures;
 using HeroesONE_R.Utilities;
 
 namespace HeroesONE_R.Structures.SonicHeroes
@@ -85,6 +86,36 @@ namespace HeroesONE_R.Structures.SonicHeroes
             }
 
             return oneArchive;
+        }
+
+        /// <summary>
+        /// Parses a Sonic Heroes/Shadow ONE Archive and retrieves a HeroesONE archive,
+        /// simpler and more optimized for manipulation of individual files.
+        /// </summary>
+        /// <returns>A HeroesONE archive that makes manipulating ONE archives easy!</returns>
+        // ReSharper disable once InconsistentNaming
+        public unsafe Archive GetArchive()
+        {
+            // New archive
+            Archive heroesONEArchive = new Archive(FileHeader.RenderWareVersion);
+            heroesONEArchive.Files = new List<ArchiveFile>(Files.Count);
+
+            // Build the file list.
+            foreach (ONEFile oneFile in Files)
+            {
+                // Get the file details.
+                ArchiveFile heroesOneArchiveFile = new ArchiveFile();
+                heroesOneArchiveFile.CompressedData = oneFile.CompressedData;
+                heroesOneArchiveFile.RwVersion = oneFile.ONEFileHeader.RwVersion;
+
+                // Just to simplify following line.
+                int fileNameIndex = oneFile.ONEFileHeader.FileNameIndex;
+                heroesOneArchiveFile.Name = FileNames[fileNameIndex].ToString();
+
+                heroesONEArchive.Files.Add(heroesOneArchiveFile);
+            }
+
+            return heroesONEArchive;
         }
     }
 }

@@ -41,9 +41,6 @@ namespace HeroesONE_R_GUI
             string myExecutable = Assembly.GetEntryAssembly().Location;
             string command = $"\"{myExecutable}\" \"%1\"";
 
-            // Specifies the key (folder name to write the default file association to).
-            string keyName = @"\shell\Open\command";
-
             // Create default key for .one\shell\Open\command\
             var commandKey = oneKey.CreateSubKey("shell\\Open\\command");
             commandKey.SetValue("", command);

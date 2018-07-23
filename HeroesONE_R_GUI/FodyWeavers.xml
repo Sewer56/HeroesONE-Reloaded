@@ -2,8 +2,15 @@
 <Weavers>
   <Costura>
     <Costura IncludeDebugSymbols='false' />
-    <Unmanaged32Assemblies>
+    <ExcludeAssemblies>
+      AdvancedDLSupport
+      csharp-prs
       dlang-prs
-    </Unmanaged32Assemblies>
+      HeroesONE_R
+      Mono.DllMap
+      StrictEmit
+      System.Runtime.CompilerServices.Unsafe
+      System.ValueTuple
+    </ExcludeAssemblies>
   </Costura>
 </Weavers>

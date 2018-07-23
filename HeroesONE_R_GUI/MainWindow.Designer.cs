@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties1 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage1 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage2 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties2 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage3 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage4 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties3 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage5 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage6 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties4 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage7 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage8 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties5 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage9 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage10 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties11 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage21 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage22 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties12 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage23 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage24 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties13 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage25 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage26 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties14 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage27 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage28 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties15 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage29 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage30 = new Reloaded_GUI.Styles.Animation.AnimMessage();
             this.titleBar_Title = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.box_FileList = new Reloaded_GUI.Styles.Controls.Animated.AnimatedDataGridView();
             this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +74,8 @@
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleBar_StatusBar = new System.Windows.Forms.Panel();
+            this.saveShadow050ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveShadow060ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).BeginInit();
             this.titleBar_Panel.SuspendLayout();
             this.categoryBar_MenuStrip.SuspendLayout();
@@ -83,23 +85,23 @@
             // 
             // titleBar_Title
             // 
-            animMessage1.Control = this.titleBar_Title;
-            animMessage1.PlayAnimation = true;
-            animProperties1.BackColorMessage = animMessage1;
-            animMessage2.Control = this.titleBar_Title;
-            animMessage2.PlayAnimation = true;
-            animProperties1.ForeColorMessage = animMessage2;
-            animProperties1.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties1.MouseEnterDuration = 200F;
-            animProperties1.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties1.MouseEnterFramerate = 144F;
-            animProperties1.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties1.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties1.MouseLeaveDuration = 200F;
-            animProperties1.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties1.MouseLeaveFramerate = 144F;
-            animProperties1.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_Title.AnimProperties = animProperties1;
+            animMessage21.Control = this.titleBar_Title;
+            animMessage21.PlayAnimation = true;
+            animProperties11.BackColorMessage = animMessage21;
+            animMessage22.Control = this.titleBar_Title;
+            animMessage22.PlayAnimation = true;
+            animProperties11.ForeColorMessage = animMessage22;
+            animProperties11.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties11.MouseEnterDuration = 200F;
+            animProperties11.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties11.MouseEnterFramerate = 144F;
+            animProperties11.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties11.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties11.MouseLeaveDuration = 200F;
+            animProperties11.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties11.MouseLeaveFramerate = 144F;
+            animProperties11.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_Title.AnimProperties = animProperties11;
             this.titleBar_Title.CaptureChildren = false;
             this.titleBar_Title.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleBar_Title.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -126,23 +128,23 @@
             this.box_FileList.AllowUserToDeleteRows = false;
             this.box_FileList.AllowUserToResizeColumns = false;
             this.box_FileList.AllowUserToResizeRows = false;
-            animMessage3.Control = this.box_FileList;
-            animMessage3.PlayAnimation = true;
-            animProperties2.BackColorMessage = animMessage3;
-            animMessage4.Control = this.box_FileList;
-            animMessage4.PlayAnimation = true;
-            animProperties2.ForeColorMessage = animMessage4;
-            animProperties2.MouseEnterBackColor = System.Drawing.Color.Empty;
-            animProperties2.MouseEnterDuration = 0F;
-            animProperties2.MouseEnterForeColor = System.Drawing.Color.Empty;
-            animProperties2.MouseEnterFramerate = 0F;
-            animProperties2.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties2.MouseLeaveBackColor = System.Drawing.Color.Empty;
-            animProperties2.MouseLeaveDuration = 0F;
-            animProperties2.MouseLeaveForeColor = System.Drawing.Color.Empty;
-            animProperties2.MouseLeaveFramerate = 0F;
-            animProperties2.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.box_FileList.AnimProperties = animProperties2;
+            animMessage23.Control = this.box_FileList;
+            animMessage23.PlayAnimation = true;
+            animProperties12.BackColorMessage = animMessage23;
+            animMessage24.Control = this.box_FileList;
+            animMessage24.PlayAnimation = true;
+            animProperties12.ForeColorMessage = animMessage24;
+            animProperties12.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties12.MouseEnterDuration = 0F;
+            animProperties12.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties12.MouseEnterFramerate = 0F;
+            animProperties12.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties12.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties12.MouseLeaveDuration = 0F;
+            animProperties12.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties12.MouseLeaveFramerate = 0F;
+            animProperties12.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.box_FileList.AnimProperties = animProperties12;
             this.box_FileList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.box_FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box_FileList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -153,15 +155,15 @@
             this.box_FileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fileName,
             this.rwVersion});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.box_FileList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.box_FileList.DefaultCellStyle = dataGridViewCellStyle9;
             this.box_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.box_FileList.DragRowIndex = 0;
             this.box_FileList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -188,9 +190,9 @@
             // fileName
             // 
             this.fileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.fileName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.fileName.DefaultCellStyle = dataGridViewCellStyle7;
             this.fileName.FillWeight = 70F;
             this.fileName.HeaderText = "File Name";
             this.fileName.Name = "fileName";
@@ -199,9 +201,9 @@
             // rwVersion
             // 
             this.rwVersion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.rwVersion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.rwVersion.DefaultCellStyle = dataGridViewCellStyle8;
             this.rwVersion.FillWeight = 30F;
             this.rwVersion.HeaderText = "RW Version";
             this.rwVersion.Name = "rwVersion";
@@ -209,23 +211,23 @@
             // 
             // categoryBar_Close
             // 
-            animMessage5.Control = this.categoryBar_Close;
-            animMessage5.PlayAnimation = true;
-            animProperties3.BackColorMessage = animMessage5;
-            animMessage6.Control = this.categoryBar_Close;
-            animMessage6.PlayAnimation = true;
-            animProperties3.ForeColorMessage = animMessage6;
-            animProperties3.MouseEnterBackColor = System.Drawing.Color.Empty;
-            animProperties3.MouseEnterDuration = 0F;
-            animProperties3.MouseEnterForeColor = System.Drawing.Color.Empty;
-            animProperties3.MouseEnterFramerate = 0F;
-            animProperties3.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties3.MouseLeaveBackColor = System.Drawing.Color.Empty;
-            animProperties3.MouseLeaveDuration = 0F;
-            animProperties3.MouseLeaveForeColor = System.Drawing.Color.Empty;
-            animProperties3.MouseLeaveFramerate = 0F;
-            animProperties3.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.categoryBar_Close.AnimProperties = animProperties3;
+            animMessage25.Control = this.categoryBar_Close;
+            animMessage25.PlayAnimation = true;
+            animProperties13.BackColorMessage = animMessage25;
+            animMessage26.Control = this.categoryBar_Close;
+            animMessage26.PlayAnimation = true;
+            animProperties13.ForeColorMessage = animMessage26;
+            animProperties13.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties13.MouseEnterDuration = 0F;
+            animProperties13.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties13.MouseEnterFramerate = 0F;
+            animProperties13.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties13.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties13.MouseLeaveDuration = 0F;
+            animProperties13.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties13.MouseLeaveFramerate = 0F;
+            animProperties13.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.categoryBar_Close.AnimProperties = animProperties13;
             this.categoryBar_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.categoryBar_Close.CaptureChildren = false;
             this.categoryBar_Close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -249,23 +251,23 @@
             // 
             // titleBar_RWVersion
             // 
-            animMessage7.Control = this.titleBar_RWVersion;
-            animMessage7.PlayAnimation = true;
-            animProperties4.BackColorMessage = animMessage7;
-            animMessage8.Control = this.titleBar_RWVersion;
-            animMessage8.PlayAnimation = true;
-            animProperties4.ForeColorMessage = animMessage8;
-            animProperties4.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties4.MouseEnterDuration = 200F;
-            animProperties4.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties4.MouseEnterFramerate = 144F;
-            animProperties4.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties4.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties4.MouseLeaveDuration = 200F;
-            animProperties4.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties4.MouseLeaveFramerate = 144F;
-            animProperties4.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_RWVersion.AnimProperties = animProperties4;
+            animMessage27.Control = this.titleBar_RWVersion;
+            animMessage27.PlayAnimation = true;
+            animProperties14.BackColorMessage = animMessage27;
+            animMessage28.Control = this.titleBar_RWVersion;
+            animMessage28.PlayAnimation = true;
+            animProperties14.ForeColorMessage = animMessage28;
+            animProperties14.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties14.MouseEnterDuration = 200F;
+            animProperties14.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties14.MouseEnterFramerate = 144F;
+            animProperties14.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties14.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties14.MouseLeaveDuration = 200F;
+            animProperties14.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties14.MouseLeaveFramerate = 144F;
+            animProperties14.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_RWVersion.AnimProperties = animProperties14;
             this.titleBar_RWVersion.CaptureChildren = false;
             this.titleBar_RWVersion.Dock = System.Windows.Forms.DockStyle.Left;
             this.titleBar_RWVersion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -290,23 +292,23 @@
             // 
             // titleBar_ItemCount
             // 
-            animMessage9.Control = this.titleBar_ItemCount;
-            animMessage9.PlayAnimation = true;
-            animProperties5.BackColorMessage = animMessage9;
-            animMessage10.Control = this.titleBar_ItemCount;
-            animMessage10.PlayAnimation = true;
-            animProperties5.ForeColorMessage = animMessage10;
-            animProperties5.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties5.MouseEnterDuration = 200F;
-            animProperties5.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties5.MouseEnterFramerate = 144F;
-            animProperties5.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties5.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties5.MouseLeaveDuration = 200F;
-            animProperties5.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties5.MouseLeaveFramerate = 144F;
-            animProperties5.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_ItemCount.AnimProperties = animProperties5;
+            animMessage29.Control = this.titleBar_ItemCount;
+            animMessage29.PlayAnimation = true;
+            animProperties15.BackColorMessage = animMessage29;
+            animMessage30.Control = this.titleBar_ItemCount;
+            animMessage30.PlayAnimation = true;
+            animProperties15.ForeColorMessage = animMessage30;
+            animProperties15.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties15.MouseEnterDuration = 200F;
+            animProperties15.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties15.MouseEnterFramerate = 144F;
+            animProperties15.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties15.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties15.MouseLeaveDuration = 200F;
+            animProperties15.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties15.MouseLeaveFramerate = 144F;
+            animProperties15.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_ItemCount.AnimProperties = animProperties15;
             this.titleBar_ItemCount.AutoSize = true;
             this.titleBar_ItemCount.CaptureChildren = false;
             this.titleBar_ItemCount.Dock = System.Windows.Forms.DockStyle.Right;
@@ -358,7 +360,9 @@
             this.categoryBar_FileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.saveShadow050ToolStripMenuItem,
+            this.saveShadow060ToolStripMenuItem});
             this.categoryBar_FileMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_FileMenuItem.Name = "categoryBar_FileMenuItem";
             this.categoryBar_FileMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -367,22 +371,24 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.Checked = true;
+            this.saveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save (Heroes)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // categoryBar_AddFiles
@@ -407,14 +413,14 @@
             // setArchiveRWVersionToolStripMenuItem
             // 
             this.setArchiveRWVersionToolStripMenuItem.Name = "setArchiveRWVersionToolStripMenuItem";
-            this.setArchiveRWVersionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.setArchiveRWVersionToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.setArchiveRWVersionToolStripMenuItem.Text = "Set Archive RW Version";
             this.setArchiveRWVersionToolStripMenuItem.Click += new System.EventHandler(this.setArchiveRWVersionToolStripMenuItem_Click);
             // 
             // setAllFileRWVersionToolStripMenuItem
             // 
             this.setAllFileRWVersionToolStripMenuItem.Name = "setAllFileRWVersionToolStripMenuItem";
-            this.setAllFileRWVersionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.setAllFileRWVersionToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.setAllFileRWVersionToolStripMenuItem.Text = "Set All File RW Version";
             this.setAllFileRWVersionToolStripMenuItem.Click += new System.EventHandler(this.setAllFileRWVersionToolStripMenuItem_Click);
             // 
@@ -424,7 +430,7 @@
             this.enableAdaptiveCompressionLevelToolStripMenuItem,
             this.manuallySetCompressionLevelToolStripMenuItem});
             this.compressionSettingsToolStripMenuItem.Name = "compressionSettingsToolStripMenuItem";
-            this.compressionSettingsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.compressionSettingsToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.compressionSettingsToolStripMenuItem.Text = "Compression Settings";
             // 
             // enableAdaptiveCompressionLevelToolStripMenuItem
@@ -453,40 +459,40 @@
             this.replaceToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.box_MenuStrip.Name = "box_MenuStrip";
-            this.box_MenuStrip.Size = new System.Drawing.Size(178, 114);
+            this.box_MenuStrip.Size = new System.Drawing.Size(179, 114);
             // 
             // changeRWVersionToolStripMenuItem
             // 
             this.changeRWVersionToolStripMenuItem.Name = "changeRWVersionToolStripMenuItem";
-            this.changeRWVersionToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.changeRWVersionToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.changeRWVersionToolStripMenuItem.Text = "Change RW Version";
             this.changeRWVersionToolStripMenuItem.Click += new System.EventHandler(this.changeRWVersionToolStripMenuItem_Click);
             // 
             // extractToolStripMenuItem
             // 
             this.extractToolStripMenuItem.Name = "extractToolStripMenuItem";
-            this.extractToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.extractToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.extractToolStripMenuItem.Text = "Extract File";
             this.extractToolStripMenuItem.Click += new System.EventHandler(this.extractToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.replaceToolStripMenuItem.Text = "Replace";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -500,6 +506,20 @@
             this.titleBar_StatusBar.Name = "titleBar_StatusBar";
             this.titleBar_StatusBar.Size = new System.Drawing.Size(362, 30);
             this.titleBar_StatusBar.TabIndex = 16;
+            // 
+            // saveShadow050ToolStripMenuItem
+            // 
+            this.saveShadow050ToolStripMenuItem.Name = "saveShadow050ToolStripMenuItem";
+            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow050ToolStripMenuItem.Text = "Save (Shadow 0.50)";
+            this.saveShadow050ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow050ToolStripMenuItem_Click);
+            // 
+            // saveShadow060ToolStripMenuItem
+            // 
+            this.saveShadow060ToolStripMenuItem.Name = "saveShadow060ToolStripMenuItem";
+            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow060ToolStripMenuItem.Text = "Save (Shadow 0.60)";
+            this.saveShadow060ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow060ToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -556,6 +576,8 @@
         private System.Windows.Forms.ToolStripMenuItem enableAdaptiveCompressionLevelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manuallySetCompressionLevelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveShadow050ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveShadow060ToolStripMenuItem;
     }
 }
 

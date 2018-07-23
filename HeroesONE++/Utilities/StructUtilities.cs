@@ -181,6 +181,20 @@ namespace HeroesONE_R.Utilities
         }
 
         /// <summary>
+        /// Converts a supplied user structure into an array of bytes for writing.
+        /// </summary>
+        /// <param name="structure">The structure to be converted to an array of bytes.</param>
+        /// <returns>The user converted structure as an array of bytes.</returns>
+        public static unsafe byte[] ConvertStructureToByteArrayUnsafe<TStructure>(TStructure structure)
+        {
+            byte[] buffer = new byte[Unsafe.SizeOf<TStructure>()];
+            fixed (byte* pBuffer = &buffer[0])
+                Unsafe.Write(pBuffer, structure);
+
+            return buffer;
+        }
+
+        /// <summary>
         /// Writes a supplied user structure (or class marked [StructLayout(LayoutKind.Sequential)])
         /// to a target location in the memory space of the same process.
         /// </summary>

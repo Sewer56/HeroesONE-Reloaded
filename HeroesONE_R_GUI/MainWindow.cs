@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HeroesONE_R.Structures;
+using HeroesONE_R.Structures.Common;
 using HeroesONE_R.Structures.Subsctructures;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
@@ -81,9 +82,10 @@ namespace HeroesONE_R_GUI
                 {
                     // Attempt to load the file from disk, parse the .ONE archive and update the GUI.
                     byte[] file = File.ReadAllBytes(openFile);
-                    Archive = Archive.FromHeroesONE(ref file);
+                    Archive = Archive.FromONEFile(ref file);
                     UpdateGUI(ref Archive);
                     this.titleBar_Title.Text = Path.GetFileName(openFile);
+                    SetCheckboxHint(ref file);
 
                     // If this throws, or there is no file, an empty file is loaded instead.
                 }
@@ -91,6 +93,33 @@ namespace HeroesONE_R_GUI
             }
             else
             { Archive = new Archive(CommonRWVersions.Heroes); } 
+        }
+
+        /// <summary>
+        /// Tries to check the type of .ONE file that the supplied byte array is
+        /// and sets the checkbox hint beside the save buttons appropriately.
+        /// </summary>
+        /// <param name="oneFile"></param>
+        private void SetCheckboxHint(ref byte[] oneFile)
+        {
+            // Update toolstrip save button hint.
+            var archiveType = ONEArchiveTester.GetArchiveType(ref oneFile);
+            saveShadow050ToolStripMenuItem.Checked = false;
+            saveShadow060ToolStripMenuItem.Checked = false;
+            saveToolStripMenuItem.Checked = false;
+
+            switch (archiveType)
+            {
+                case ONEArchiveType.Heroes:
+                    saveToolStripMenuItem.Checked = true;
+                    break;
+                case ONEArchiveType.Shadow050:
+                    saveShadow050ToolStripMenuItem.Checked = true;
+                    break;
+                case ONEArchiveType.Shadow060:
+                    saveShadow060ToolStripMenuItem.Checked = true;
+                    break;
+            }
         }
 
         /// <summary>
@@ -114,9 +143,10 @@ namespace HeroesONE_R_GUI
             {
                 ResetONEArchive();
                 byte[] oneFile = File.ReadAllBytes(fileDialog.FileName);
-                Archive = Archive.FromHeroesONE(ref oneFile);
+                Archive = Archive.FromONEFile(ref oneFile);
                 UpdateGUI(ref Archive);
-
+                SetCheckboxHint(ref oneFile);
+                
                 // Set titlebar.
                 this.titleBar_Title.Text = Path.GetFileName(fileDialog.FileName);
             }
@@ -132,7 +162,7 @@ namespace HeroesONE_R_GUI
             // Pick ONE file.
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
-                Title = "Save .ONE File",
+                Title = "Save Heroes .ONE File",
                 DefaultFileName = this.titleBar_Title.Text
             };
 
@@ -142,7 +172,7 @@ namespace HeroesONE_R_GUI
             // Save the file to disk.
             if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                byte[] heroesFile = Archive.GenerateONEArchive(ref Archive).ToArray();
+                byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
                 File.WriteAllBytes(fileDialog.FileName, heroesFile);
             }
         }
@@ -413,6 +443,46 @@ namespace HeroesONE_R_GUI
             RenameDialog searchBufferDialog = new RenameDialog(ArchiveFile.Name);
             ArchiveFile.Name = searchBufferDialog.ShowDialog();
             UpdateGUI(ref Archive);
+        }
+
+        private void saveShadow050ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Pick ONE file.
+            CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
+            {
+                Title = "Save Shadow 0.50 .ONE File",
+                DefaultFileName = this.titleBar_Title.Text
+            };
+
+            CommonFileDialogFilter filter = new CommonFileDialogFilter("Shadow The Hedgehog ONE Archive", ".one");
+            fileDialog.Filters.Add(filter);
+
+            // Save the file to disk.
+            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                byte[] shadowFile = Archive.BuildShadowONEArchive(false).ToArray();
+                File.WriteAllBytes(fileDialog.FileName, shadowFile);
+            }
+        }
+
+        private void saveShadow060ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Pick ONE file.
+            CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
+            {
+                Title = "Save Shadow 0.60 .ONE File",
+                DefaultFileName = this.titleBar_Title.Text
+            };
+
+            CommonFileDialogFilter filter = new CommonFileDialogFilter("Shadow The Hedgehog ONE Archive", ".one");
+            fileDialog.Filters.Add(filter);
+
+            // Save the file to disk.
+            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                byte[] shadowFile = Archive.BuildShadowONEArchive(true).ToArray();
+                File.WriteAllBytes(fileDialog.FileName, shadowFile);
+            }
         }
     }
 }

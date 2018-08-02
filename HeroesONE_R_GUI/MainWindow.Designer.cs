@@ -31,24 +31,24 @@ namespace HeroesONE_R_GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties1 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage1 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage2 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties2 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage3 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage4 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties3 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage5 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage6 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties4 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage7 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage8 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimProperties animProperties5 = new Reloaded_GUI.Styles.Animation.AnimProperties();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage9 = new Reloaded_GUI.Styles.Animation.AnimMessage();
-            Reloaded_GUI.Styles.Animation.AnimMessage animMessage10 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties6 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage11 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage12 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties7 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage13 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage14 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties8 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage15 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage16 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties9 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage17 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage18 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties10 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage19 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage20 = new Reloaded_GUI.Styles.Animation.AnimMessage();
             this.titleBar_Title = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.box_FileList = new HeroesONE_R_GUI.Controls.CustomDataGridView();
             this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +78,7 @@ namespace HeroesONE_R_GUI
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleBar_StatusBar = new System.Windows.Forms.Panel();
+            this.categoryBar_ExtractAll = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).BeginInit();
             this.titleBar_Panel.SuspendLayout();
             this.categoryBar_MenuStrip.SuspendLayout();
@@ -87,23 +88,23 @@ namespace HeroesONE_R_GUI
             // 
             // titleBar_Title
             // 
-            animMessage1.Control = this.titleBar_Title;
-            animMessage1.PlayAnimation = true;
-            animProperties1.BackColorMessage = animMessage1;
-            animMessage2.Control = this.titleBar_Title;
-            animMessage2.PlayAnimation = true;
-            animProperties1.ForeColorMessage = animMessage2;
-            animProperties1.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties1.MouseEnterDuration = 200F;
-            animProperties1.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties1.MouseEnterFramerate = 144F;
-            animProperties1.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties1.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties1.MouseLeaveDuration = 200F;
-            animProperties1.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties1.MouseLeaveFramerate = 144F;
-            animProperties1.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_Title.AnimProperties = animProperties1;
+            animMessage11.Control = this.titleBar_Title;
+            animMessage11.PlayAnimation = true;
+            animProperties6.BackColorMessage = animMessage11;
+            animMessage12.Control = this.titleBar_Title;
+            animMessage12.PlayAnimation = true;
+            animProperties6.ForeColorMessage = animMessage12;
+            animProperties6.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties6.MouseEnterDuration = 200F;
+            animProperties6.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties6.MouseEnterFramerate = 144F;
+            animProperties6.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties6.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties6.MouseLeaveDuration = 200F;
+            animProperties6.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties6.MouseLeaveFramerate = 144F;
+            animProperties6.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_Title.AnimProperties = animProperties6;
             this.titleBar_Title.CaptureChildren = false;
             this.titleBar_Title.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleBar_Title.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -131,23 +132,23 @@ namespace HeroesONE_R_GUI
             this.box_FileList.AllowUserToDeleteRows = false;
             this.box_FileList.AllowUserToResizeColumns = false;
             this.box_FileList.AllowUserToResizeRows = false;
-            animMessage3.Control = this.box_FileList;
-            animMessage3.PlayAnimation = true;
-            animProperties2.BackColorMessage = animMessage3;
-            animMessage4.Control = this.box_FileList;
-            animMessage4.PlayAnimation = true;
-            animProperties2.ForeColorMessage = animMessage4;
-            animProperties2.MouseEnterBackColor = System.Drawing.Color.Empty;
-            animProperties2.MouseEnterDuration = 0F;
-            animProperties2.MouseEnterForeColor = System.Drawing.Color.Empty;
-            animProperties2.MouseEnterFramerate = 0F;
-            animProperties2.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties2.MouseLeaveBackColor = System.Drawing.Color.Empty;
-            animProperties2.MouseLeaveDuration = 0F;
-            animProperties2.MouseLeaveForeColor = System.Drawing.Color.Empty;
-            animProperties2.MouseLeaveFramerate = 0F;
-            animProperties2.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.box_FileList.AnimProperties = animProperties2;
+            animMessage13.Control = this.box_FileList;
+            animMessage13.PlayAnimation = true;
+            animProperties7.BackColorMessage = animMessage13;
+            animMessage14.Control = this.box_FileList;
+            animMessage14.PlayAnimation = true;
+            animProperties7.ForeColorMessage = animMessage14;
+            animProperties7.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties7.MouseEnterDuration = 0F;
+            animProperties7.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties7.MouseEnterFramerate = 0F;
+            animProperties7.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties7.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties7.MouseLeaveDuration = 0F;
+            animProperties7.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties7.MouseLeaveFramerate = 0F;
+            animProperties7.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.box_FileList.AnimProperties = animProperties7;
             this.box_FileList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.box_FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box_FileList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -158,15 +159,15 @@ namespace HeroesONE_R_GUI
             this.box_FileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fileName,
             this.rwVersion});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.box_FileList.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.box_FileList.DefaultCellStyle = dataGridViewCellStyle6;
             this.box_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.box_FileList.DragRowIndex = 0;
             this.box_FileList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -195,9 +196,9 @@ namespace HeroesONE_R_GUI
             // fileName
             // 
             this.fileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.fileName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.fileName.DefaultCellStyle = dataGridViewCellStyle4;
             this.fileName.FillWeight = 70F;
             this.fileName.HeaderText = "File Name";
             this.fileName.Name = "fileName";
@@ -206,9 +207,9 @@ namespace HeroesONE_R_GUI
             // rwVersion
             // 
             this.rwVersion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.rwVersion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.rwVersion.DefaultCellStyle = dataGridViewCellStyle5;
             this.rwVersion.FillWeight = 30F;
             this.rwVersion.HeaderText = "RW Version";
             this.rwVersion.Name = "rwVersion";
@@ -216,23 +217,23 @@ namespace HeroesONE_R_GUI
             // 
             // categoryBar_Close
             // 
-            animMessage5.Control = this.categoryBar_Close;
-            animMessage5.PlayAnimation = true;
-            animProperties3.BackColorMessage = animMessage5;
-            animMessage6.Control = this.categoryBar_Close;
-            animMessage6.PlayAnimation = true;
-            animProperties3.ForeColorMessage = animMessage6;
-            animProperties3.MouseEnterBackColor = System.Drawing.Color.Empty;
-            animProperties3.MouseEnterDuration = 0F;
-            animProperties3.MouseEnterForeColor = System.Drawing.Color.Empty;
-            animProperties3.MouseEnterFramerate = 0F;
-            animProperties3.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties3.MouseLeaveBackColor = System.Drawing.Color.Empty;
-            animProperties3.MouseLeaveDuration = 0F;
-            animProperties3.MouseLeaveForeColor = System.Drawing.Color.Empty;
-            animProperties3.MouseLeaveFramerate = 0F;
-            animProperties3.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.categoryBar_Close.AnimProperties = animProperties3;
+            animMessage15.Control = this.categoryBar_Close;
+            animMessage15.PlayAnimation = true;
+            animProperties8.BackColorMessage = animMessage15;
+            animMessage16.Control = this.categoryBar_Close;
+            animMessage16.PlayAnimation = true;
+            animProperties8.ForeColorMessage = animMessage16;
+            animProperties8.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties8.MouseEnterDuration = 0F;
+            animProperties8.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties8.MouseEnterFramerate = 0F;
+            animProperties8.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties8.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties8.MouseLeaveDuration = 0F;
+            animProperties8.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties8.MouseLeaveFramerate = 0F;
+            animProperties8.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.categoryBar_Close.AnimProperties = animProperties8;
             this.categoryBar_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.categoryBar_Close.CaptureChildren = false;
             this.categoryBar_Close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
@@ -256,23 +257,23 @@ namespace HeroesONE_R_GUI
             // 
             // titleBar_RWVersion
             // 
-            animMessage7.Control = this.titleBar_RWVersion;
-            animMessage7.PlayAnimation = true;
-            animProperties4.BackColorMessage = animMessage7;
-            animMessage8.Control = this.titleBar_RWVersion;
-            animMessage8.PlayAnimation = true;
-            animProperties4.ForeColorMessage = animMessage8;
-            animProperties4.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties4.MouseEnterDuration = 200F;
-            animProperties4.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties4.MouseEnterFramerate = 144F;
-            animProperties4.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties4.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties4.MouseLeaveDuration = 200F;
-            animProperties4.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties4.MouseLeaveFramerate = 144F;
-            animProperties4.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_RWVersion.AnimProperties = animProperties4;
+            animMessage17.Control = this.titleBar_RWVersion;
+            animMessage17.PlayAnimation = true;
+            animProperties9.BackColorMessage = animMessage17;
+            animMessage18.Control = this.titleBar_RWVersion;
+            animMessage18.PlayAnimation = true;
+            animProperties9.ForeColorMessage = animMessage18;
+            animProperties9.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties9.MouseEnterDuration = 200F;
+            animProperties9.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties9.MouseEnterFramerate = 144F;
+            animProperties9.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties9.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties9.MouseLeaveDuration = 200F;
+            animProperties9.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties9.MouseLeaveFramerate = 144F;
+            animProperties9.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_RWVersion.AnimProperties = animProperties9;
             this.titleBar_RWVersion.CaptureChildren = false;
             this.titleBar_RWVersion.Dock = System.Windows.Forms.DockStyle.Left;
             this.titleBar_RWVersion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -297,23 +298,23 @@ namespace HeroesONE_R_GUI
             // 
             // titleBar_ItemCount
             // 
-            animMessage9.Control = this.titleBar_ItemCount;
-            animMessage9.PlayAnimation = true;
-            animProperties5.BackColorMessage = animMessage9;
-            animMessage10.Control = this.titleBar_ItemCount;
-            animMessage10.PlayAnimation = true;
-            animProperties5.ForeColorMessage = animMessage10;
-            animProperties5.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties5.MouseEnterDuration = 200F;
-            animProperties5.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties5.MouseEnterFramerate = 144F;
-            animProperties5.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties5.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties5.MouseLeaveDuration = 200F;
-            animProperties5.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties5.MouseLeaveFramerate = 144F;
-            animProperties5.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_ItemCount.AnimProperties = animProperties5;
+            animMessage19.Control = this.titleBar_ItemCount;
+            animMessage19.PlayAnimation = true;
+            animProperties10.BackColorMessage = animMessage19;
+            animMessage20.Control = this.titleBar_ItemCount;
+            animMessage20.PlayAnimation = true;
+            animProperties10.ForeColorMessage = animMessage20;
+            animProperties10.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties10.MouseEnterDuration = 200F;
+            animProperties10.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties10.MouseEnterFramerate = 144F;
+            animProperties10.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties10.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties10.MouseLeaveDuration = 200F;
+            animProperties10.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties10.MouseLeaveFramerate = 144F;
+            animProperties10.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_ItemCount.AnimProperties = animProperties10;
             this.titleBar_ItemCount.AutoSize = true;
             this.titleBar_ItemCount.CaptureChildren = false;
             this.titleBar_ItemCount.Dock = System.Windows.Forms.DockStyle.Right;
@@ -353,6 +354,7 @@ namespace HeroesONE_R_GUI
             this.categoryBar_MenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
             this.categoryBar_MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.categoryBar_FileMenuItem,
+            this.categoryBar_ExtractAll,
             this.categoryBar_AddFiles,
             this.categoryBar_OptionsMenuItem});
             this.categoryBar_MenuStrip.Location = new System.Drawing.Point(0, 42);
@@ -526,6 +528,14 @@ namespace HeroesONE_R_GUI
             this.titleBar_StatusBar.Size = new System.Drawing.Size(362, 30);
             this.titleBar_StatusBar.TabIndex = 16;
             // 
+            // categoryBar_ExtractAll
+            // 
+            this.categoryBar_ExtractAll.ForeColor = System.Drawing.Color.Silver;
+            this.categoryBar_ExtractAll.Name = "categoryBar_ExtractAll";
+            this.categoryBar_ExtractAll.Size = new System.Drawing.Size(71, 20);
+            this.categoryBar_ExtractAll.Text = "Extract All";
+            this.categoryBar_ExtractAll.Click += new System.EventHandler(this.categoryBar_ExtractAll_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -588,6 +598,7 @@ namespace HeroesONE_R_GUI
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveShadow050ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveShadow060ToolStripMenuItem;
+        private ToolStripMenuItem categoryBar_ExtractAll;
     }
 }
 

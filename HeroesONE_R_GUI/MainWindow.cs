@@ -349,11 +349,12 @@ namespace HeroesONE_R_GUI
             // Load file(s)
             if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                foreach (string fileLocation in fileDialog.FileNames)
+                ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+                Parallel.ForEach(fileDialog.FileNames, options, file =>
                 {
-                    Archive.Files.Add(new ArchiveFile(fileLocation));
-                }
-
+                    Archive.Files.Add(new ArchiveFile(file));
+                });
+             
                 UpdateGUI(ref Archive);
             }
         }
@@ -507,6 +508,27 @@ namespace HeroesONE_R_GUI
             foreach (string filePath in filePaths)
             { Archive.Files.Add(new ArchiveFile(filePath)); }
             UpdateGUI(ref Archive);
+        }
+
+        private void categoryBar_ExtractAll_Click(object sender, EventArgs e)
+        {
+            // Select path to extract to.
+            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
+            {
+                Title = "Select folder to extract to.",
+                IsFolderPicker = true
+            };
+
+            // Save the file(s) to disk.
+            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+                Parallel.ForEach(Archive.Files, options, file =>
+                {
+                    string finalFilePath = Path.Combine(fileDialog.FileName, file.Name);
+                    file.WriteToFile(finalFilePath);
+                });
+            }
         }
     }
 }

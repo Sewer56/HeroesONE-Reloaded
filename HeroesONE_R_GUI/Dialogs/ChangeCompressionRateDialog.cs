@@ -62,7 +62,7 @@ namespace HeroesONE_R_GUI.Dialogs
             base.ShowDialog();
 
             // Set those contents back.
-            return Convert.ToInt32(borderless_BufferSize.Text) % 8191;
+            return Convert.ToInt32(borderless_BufferSize.Text) % 8192;
         }
 
         private void item_OpenConfigDirectory_Click(object sender, EventArgs e)

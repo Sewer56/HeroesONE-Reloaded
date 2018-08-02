@@ -59,6 +59,11 @@ namespace HeroesONE_R_GUI
         public ArchiveFile ArchiveFile;
 
         /// <summary>
+        /// Set to true once a shadow archive has been opened at least once.
+        /// </summary>
+        private bool OpenedShadowArchive;
+
+        /// <summary>
         /// Sets up the current window and the Reloaded theme.
         /// </summary>
         /// <param name="openFile">Specifies the file to open on launch, if any.</param>
@@ -87,12 +92,34 @@ namespace HeroesONE_R_GUI
                     this.titleBar_Title.Text = Path.GetFileName(openFile);
                     SetCheckboxHint(ref file);
 
+                    // Conditionally display Shadow the Edgehog warning.
+                    CheckShadowWarning(ref file);
+
                     // If this throws, or there is no file, an empty file is loaded instead.
                 }
                 catch { Archive = new Archive(CommonRWVersions.Heroes); }
             }
             else
             { Archive = new Archive(CommonRWVersions.Heroes); } 
+        }
+
+        /// <summary>
+        /// Used to conditionally display a warning on opening Shadow The Hedgehog .ONE files pleading the user
+        /// to retain the file order.
+        /// </summary>
+        /// <param name="oneArchive">Byte array containing a .ONE File.</param>
+        private void CheckShadowWarning(ref byte[] oneArchive)
+        {
+            // Know if we're dealing with Shadow050 or Shadow060
+            ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref oneArchive);
+            if (archiveType == ONEArchiveType.Shadow050 || archiveType == ONEArchiveType.Shadow060 && OpenedShadowArchive == false)
+            {
+                OpenedShadowArchive = true;
+                MessageBox.Show("Note: You are opening a Shadow The Hedgehog Archive.\n\n" +
+                                "For some of the .ONE files (such as shadow.one), Shadow The Hedgehog seems to expect a strict file order.\n\n" +
+                                "It is highly recommended you either use the Raplace button or reimport the files in the same order as the original when creating new archives and reimporting.");
+            }
+
         }
 
         /// <summary>
@@ -141,12 +168,18 @@ namespace HeroesONE_R_GUI
             // Load it if selected.
             if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
+                // Reset archive, load new archive in.
                 ResetONEArchive();
                 byte[] oneFile = File.ReadAllBytes(fileDialog.FileName);
                 Archive = Archive.FromONEFile(ref oneFile);
+
+                // Update the GUI
                 UpdateGUI(ref Archive);
                 SetCheckboxHint(ref oneFile);
-                
+
+                // Conditionally display Shadow the Edgehog warning.
+                CheckShadowWarning(ref oneFile);
+
                 // Set titlebar.
                 this.titleBar_Title.Text = Path.GetFileName(fileDialog.FileName);
             }

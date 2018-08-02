@@ -203,7 +203,6 @@ namespace HeroesONE_R.Structures
             filePointer += Unsafe.SizeOf<ONE50FileEntry>() * (fileCount);
 
             // Note: Both file entry types have equal length.
-
             for (int x = 0; x < fileCount; x++) 
             {
                 localFiles[x].FileOffset = filePointer; // Offset for dummy files.

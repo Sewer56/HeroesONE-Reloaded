@@ -16,10 +16,10 @@ Simply download a pre-compiled copy of the utility from the Releases tab and use
 ### Developers:
 The most useful classes/structs within this project include the following:
 
+- `Archive` Provides you with a generic archive structure from which you can either load an archive into or build a Shadow 0.60/0.50 archive or a Sonic Heroes .ONE Archive. Probably everything you need.
 - `ONEArchiveTester` which allows for guessing of the ONE Archive Type (Sonic Heroes archive or Shadow The Hedgehog Version 0.50/0,60 archive)
 - `RWVersion` which provides an easy to use abstraction over a 4 byte RenderWare version signature allowing for the extraction and modification of the individual parts of the packed integer containing the RW Version.
 - `Prs` provides an easy to use abstraction with additional adaptive search buffer support over my C# frontend for my D compression library.
-- `Archive` Provides you with a generic archive structure from which you can build either a Shadow 0.60/0.50 archive or a Sonic Heroes .ONE.
 - `ONEArchive` which both describes a Sonic Heroes ONE archive and is a parser of said archives as well as providing means of converting self to `Archive`
 - `ONEShadowArchive` which is the same as `ONEArchive` but for Shadow The Hedgehog.
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -538,8 +538,13 @@ namespace HeroesONE_R_GUI
         {
             // Contains the paths to the individual files.
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            foreach (string filePath in filePaths)
-            { Archive.Files.Add(new ArchiveFile(filePath)); }
+
+            ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+            Parallel.ForEach(filePaths, options, file =>
+            {
+                Archive.Files.Add(new ArchiveFile(file));
+            });
+
             UpdateGUI(ref Archive);
         }
 

@@ -31,8 +31,6 @@ namespace HeroesONE_R.Structures
         /// <returns>Compressed copy of the passed in byte array.</returns>
         public static byte[] Compress(ref byte[] data)
         {
-            csharp_prs.Prs.Release();
-
             // Yay mode switching!
             if (ADAPTIVE_SEARCH_BUFFER)
             {
@@ -75,7 +73,6 @@ namespace HeroesONE_R.Structures
         /// <returns>Decompressed copy of the data.</returns>
         public static byte[] Decompress(ref byte[] data)
         {
-            csharp_prs.Prs.Release();
             return csharp_prs.Prs.Decompress(ref data);
         }
 

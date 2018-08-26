@@ -62,7 +62,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="csharp-prs" Version="1.0.1" />
+    <PackageReference Include="csharp-prs" Version="2.0.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.1" />
   </ItemGroup>
 

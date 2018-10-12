@@ -61,7 +61,8 @@ namespace HeroesONE_R_GUI
         /// <summary>
         /// Set to true once a shadow archive has been opened at least once.
         /// </summary>
-        private bool OpenedShadowArchive;
+        private bool _openedShadowArchive;
+        private string _lastOpenedDirectory;
 
         /// <summary>
         /// Sets up the current window and the Reloaded theme.
@@ -112,9 +113,9 @@ namespace HeroesONE_R_GUI
         {
             // Know if we're dealing with Shadow050 or Shadow060
             ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref oneArchive);
-            if (archiveType == ONEArchiveType.Shadow050 || archiveType == ONEArchiveType.Shadow060 && OpenedShadowArchive == false)
+            if (archiveType == ONEArchiveType.Shadow050 || archiveType == ONEArchiveType.Shadow060 && _openedShadowArchive == false)
             {
-                OpenedShadowArchive = true;
+                _openedShadowArchive = true;
                 MessageBox.Show("Note: You are opening a Shadow The Hedgehog Archive.\n\n" +
                                 "For some of the .ONE files (such as shadow.one), Shadow The Hedgehog seems to expect a strict file order.\n\n" +
                                 "It is highly recommended you either use the Raplace button or reimport the files in the same order as the original when creating new archives and reimporting.");
@@ -182,6 +183,7 @@ namespace HeroesONE_R_GUI
 
                 // Set titlebar.
                 this.titleBar_Title.Text = Path.GetFileName(fileDialog.FileName);
+                _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -196,7 +198,8 @@ namespace HeroesONE_R_GUI
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
                 Title = "Save Heroes .ONE File",
-                DefaultFileName = this.titleBar_Title.Text
+                DefaultFileName = this.titleBar_Title.Text,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             CommonFileDialogFilter filter = new CommonFileDialogFilter("Sonic Heroes ONE Archive", ".one");
@@ -485,7 +488,8 @@ namespace HeroesONE_R_GUI
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
                 Title = "Save Shadow 0.50 .ONE File",
-                DefaultFileName = this.titleBar_Title.Text
+                DefaultFileName = this.titleBar_Title.Text,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             CommonFileDialogFilter filter = new CommonFileDialogFilter("Shadow The Hedgehog ONE Archive", ".one");
@@ -505,7 +509,8 @@ namespace HeroesONE_R_GUI
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
                 Title = "Save Shadow 0.60 .ONE File",
-                DefaultFileName = this.titleBar_Title.Text
+                DefaultFileName = this.titleBar_Title.Text,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             CommonFileDialogFilter filter = new CommonFileDialogFilter("Shadow The Hedgehog ONE Archive", ".one");

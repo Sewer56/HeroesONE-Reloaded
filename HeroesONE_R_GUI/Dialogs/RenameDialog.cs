@@ -69,5 +69,18 @@ namespace HeroesONE_R_GUI.Dialogs
         {
             this.Close();
         }
+
+        /// <summary>
+        /// Overwrites Enter key to act as "Ok" clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void borderless_FileName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.Close();
+            }
+        }
     }
 }

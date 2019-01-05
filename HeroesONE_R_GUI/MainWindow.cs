@@ -118,7 +118,7 @@ namespace HeroesONE_R_GUI
                 _openedShadowArchive = true;
                 MessageBox.Show("Note: You are opening a Shadow The Hedgehog Archive.\n\n" +
                                 "For some of the .ONE files (such as shadow.one), Shadow The Hedgehog seems to expect a strict file order.\n\n" +
-                                "It is highly recommended you either use the Raplace button or reimport the files in the same order as the original when creating new archives and reimporting.");
+                                "It is highly recommended you either use the Replace button or reimport the files in the same order as the original when creating new archives and reimporting.");
             }
 
         }
@@ -349,6 +349,26 @@ namespace HeroesONE_R_GUI
                     ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
                     deleteToolStripMenuItem_Click(null, null);
                 }
+                else if (e.KeyCode == Keys.F2)
+                {
+                    ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
+                    renameToolStripMenuItem_Click(null, null);
+                }
+                if (e.Modifiers == Keys.Control)
+                {
+                    if (e.KeyCode == Keys.R)
+                    {
+                        // Replace
+                        ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
+                        replaceToolStripMenuItem_Click(null, null);
+                    }
+                    else if (e.KeyCode == Keys.E)
+                    {
+                        // Export
+                        ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
+                        extractToolStripMenuItem_Click(null, null);
+                    }
+                }
             }
             catch
             {
@@ -571,6 +591,107 @@ namespace HeroesONE_R_GUI
                     string finalFilePath = Path.Combine(fileDialog.FileName, file.Name);
                     file.WriteToFile(finalFilePath);
                 });
+            }
+        }
+
+        // Other Keyboard shortcuts
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Shift)
+            {
+                if (e.KeyCode == Keys.S)
+                {
+                    // Quick Save (by current archive type, no confirmation)
+                    if (saveToolStripMenuItem.Checked == true)
+                    {
+                        quickSave(0);
+                    }
+                    else if (saveShadow050ToolStripMenuItem.Checked == true)
+                    {
+                        quickSave(1);
+                    }
+                    else if (saveShadow060ToolStripMenuItem.Checked == true)
+                    {
+                        quickSave(2);
+                    }
+                }
+            }
+            else if (e.Modifiers == Keys.Control)
+            {
+                if (e.KeyCode == Keys.S)
+                {
+                    // Save (by current archive type)
+                    try
+                    {
+                        if (saveToolStripMenuItem.Checked == true)
+                        {
+                            saveToolStripMenuItem_Click(null, null);
+                        }
+                        else if (saveShadow050ToolStripMenuItem.Checked == true)
+                        {
+                            saveShadow050ToolStripMenuItem_Click(null, null);
+                        }
+                        else if (saveShadow060ToolStripMenuItem.Checked == true)
+                        {
+                            saveShadow060ToolStripMenuItem_Click(null, null);
+                        }
+                    }
+                    catch
+                    {
+                        // UI did not update with status of archive or archive not opened
+                    }
+                }
+                else if (e.KeyCode == Keys.O)
+                {
+                    // Open
+                    openToolStripMenuItem_Click(null, null);
+
+                }
+                else if (e.KeyCode == Keys.N)
+                {
+                    // New
+                    newToolStripMenuItem_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.A)
+                {
+                    // Add Files
+                    categoryBar_AddFiles_Click(null, null);
+                }
+                else if (e.KeyCode == Keys.X)
+                {
+                    // Extract All
+                    categoryBar_ExtractAll_Click(null, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Save without prompt. type: 0 = heroes, 1 = shadow50, 2 = shadow60.
+        /// </summary>
+        /// <param name="type"></param>
+        private void quickSave(short type) {
+            try
+            {
+                if (type == 0)
+                {
+                    byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
+                    File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
+                }
+                else if (type == 1)
+                {
+                    byte[] shadow50File = Archive.BuildShadowONEArchive(false).ToArray();
+                    File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
+                }
+                else if (type == 2)
+                {
+                    byte[] shadow60File = Archive.BuildShadowONEArchive(true).ToArray();
+                    File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
+                }
+            }
+            catch
+            {
+                // Save failed, prompt a failure.
+                MessageBox.Show("Save failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

@@ -122,6 +122,7 @@
             this.borderless_FileName.TopBorderColour = System.Drawing.SystemColors.WindowText;
             this.borderless_FileName.TopBorderStyle = System.Windows.Forms.ButtonBorderStyle.None;
             this.borderless_FileName.TopBorderWidth = 0;
+            this.borderless_FileName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.borderless_FileName_KeyDown);
             // 
             // item_Close
             // 

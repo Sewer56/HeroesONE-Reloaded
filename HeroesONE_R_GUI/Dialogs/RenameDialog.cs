@@ -78,9 +78,7 @@ namespace HeroesONE_R_GUI.Dialogs
         private void borderless_FileName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                this.Close();
-            }
+                Close();
         }
     }
 }

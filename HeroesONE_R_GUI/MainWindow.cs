@@ -344,30 +344,26 @@ namespace HeroesONE_R_GUI
         {
             try
             {
-                if (e.KeyCode == Keys.Delete)
+                ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
+
+                switch (e.KeyCode)
                 {
-                    ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
-                    deleteToolStripMenuItem_Click(null, null);
+                    case Keys.Delete:
+                        deleteToolStripMenuItem_Click(null, null);
+                        break;
+
+                    case Keys.F2:
+                        renameToolStripMenuItem_Click(null, null);
+                        break;
                 }
-                else if (e.KeyCode == Keys.F2)
-                {
-                    ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
-                    renameToolStripMenuItem_Click(null, null);
-                }
+
                 if (e.Modifiers == Keys.Control)
                 {
-                    if (e.KeyCode == Keys.R)
-                    {
-                        // Replace
-                        ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
+                    if (e.KeyCode == Keys.R) 
                         replaceToolStripMenuItem_Click(null, null);
-                    }
+
                     else if (e.KeyCode == Keys.E)
-                    {
-                        // Export
-                        ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
                         extractToolStripMenuItem_Click(null, null);
-                    }
                 }
             }
             catch
@@ -597,95 +593,90 @@ namespace HeroesONE_R_GUI
         // Other Keyboard shortcuts
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers == Keys.Shift)
+            try
             {
-                if (e.KeyCode == Keys.S)
+                switch (e.Modifiers)
                 {
-                    // Quick Save (by current archive type, no confirmation)
-                    if (saveToolStripMenuItem.Checked == true)
+                    case Keys.Shift when e.KeyCode == Keys.S:
                     {
-                        quickSave(0);
-                    }
-                    else if (saveShadow050ToolStripMenuItem.Checked == true)
-                    {
-                        quickSave(1);
-                    }
-                    else if (saveShadow060ToolStripMenuItem.Checked == true)
-                    {
-                        quickSave(2);
-                    }
-                }
-            }
-            else if (e.Modifiers == Keys.Control)
-            {
-                if (e.KeyCode == Keys.S)
-                {
-                    // Save (by current archive type)
-                    try
-                    {
-                        if (saveToolStripMenuItem.Checked == true)
-                        {
-                            saveToolStripMenuItem_Click(null, null);
-                        }
-                        else if (saveShadow050ToolStripMenuItem.Checked == true)
-                        {
-                            saveShadow050ToolStripMenuItem_Click(null, null);
-                        }
-                        else if (saveShadow060ToolStripMenuItem.Checked == true)
-                        {
-                            saveShadow060ToolStripMenuItem_Click(null, null);
-                        }
-                    }
-                    catch
-                    {
-                        // UI did not update with status of archive or archive not opened
-                    }
-                }
-                else if (e.KeyCode == Keys.O)
-                {
-                    // Open
-                    openToolStripMenuItem_Click(null, null);
+                        // Quick Save (by current archive type, no confirmation)
+                        if (saveToolStripMenuItem.Checked)
+                            QuickSave(QuickSaveType.Heroes);
 
-                }
-                else if (e.KeyCode == Keys.N)
-                {
-                    // New
-                    newToolStripMenuItem_Click(null, null);
-                }
-                else if (e.KeyCode == Keys.A)
-                {
-                    // Add Files
-                    categoryBar_AddFiles_Click(null, null);
-                }
-                else if (e.KeyCode == Keys.X)
-                {
-                    // Extract All
-                    categoryBar_ExtractAll_Click(null, null);
+                        else if (saveShadow050ToolStripMenuItem.Checked)
+                            QuickSave(QuickSaveType.Shadow50);
+
+                        else if (saveShadow060ToolStripMenuItem.Checked)
+                            QuickSave(QuickSaveType.Shadow60);
+
+                        break;
+                    }
+                    case Keys.Control when e.KeyCode == Keys.S:
+                    {
+                        // Save (by current archive type)
+                        if (saveToolStripMenuItem.Checked)
+                            saveToolStripMenuItem_Click(null, null);
+
+                        else if (saveShadow050ToolStripMenuItem.Checked)
+                            saveShadow050ToolStripMenuItem_Click(null, null);
+
+                        else if (saveShadow060ToolStripMenuItem.Checked)
+                            saveShadow060ToolStripMenuItem_Click(null, null);
+
+                        break;
+                    }
+
+                    case Keys.Control when e.KeyCode == Keys.O:
+                        openToolStripMenuItem_Click(null, null);
+                        break;
+
+                    case Keys.Control when e.KeyCode == Keys.N:
+                        newToolStripMenuItem_Click(null, null);
+                        break;
+
+                    case Keys.Control when e.KeyCode == Keys.A:
+                        categoryBar_AddFiles_Click(null, null);
+                        break;
+
+                    case Keys.Control when e.KeyCode == Keys.X:
+                        categoryBar_ExtractAll_Click(null, null);
+                        break;
                 }
             }
+            catch
+            {
+                /* No archive opened/selected. */
+            }
+
         }
 
         /// <summary>
-        /// Save without prompt. type: 0 = heroes, 1 = shadow50, 2 = shadow60.
+        /// Save without prompt to last opened directory.
         /// </summary>
-        /// <param name="type"></param>
-        private void quickSave(short type) {
+        private void QuickSave(QuickSaveType type)
+        {
             try
             {
-                if (type == 0)
+                switch (type)
                 {
-                    byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
-                    File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
-                }
-                else if (type == 1)
-                {
-                    byte[] shadow50File = Archive.BuildShadowONEArchive(false).ToArray();
-                    File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
-                }
-                else if (type == 2)
-                {
-                    byte[] shadow60File = Archive.BuildShadowONEArchive(true).ToArray();
-                    File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
+                    case QuickSaveType.Heroes:
+                    {
+                        byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
+                        File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
+                        break;
+                    }
+                    case QuickSaveType.Shadow50:
+                    {
+                        byte[] shadow50File = Archive.BuildShadowONEArchive(false).ToArray();
+                        File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
+                        break;
+                    }
+                    case QuickSaveType.Shadow60:
+                    {
+                        byte[] shadow60File = Archive.BuildShadowONEArchive(true).ToArray();
+                        File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
+                        break;
+                    }
                 }
             }
             catch
@@ -693,6 +684,13 @@ namespace HeroesONE_R_GUI
                 // Save failed, prompt a failure.
                 MessageBox.Show("Save failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+        
+        private enum QuickSaveType
+        {
+            Heroes,
+            Shadow50,
+            Shadow60
         }
     }
 }

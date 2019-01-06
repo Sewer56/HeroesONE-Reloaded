@@ -72,9 +72,9 @@ namespace HeroesONE_R_GUI
         {
             InitializeComponent();
 
-            // Load Reloaded-GUI
             ReloadedDefaultTheme = new Theme();
             Reloaded_GUI.Bindings.WindowsForms.Add(this);
+            //Load Reloaded-GUI
             ReloadedDefaultTheme.LoadCurrentTheme();
 
             // Custom render settings.
@@ -95,7 +95,7 @@ namespace HeroesONE_R_GUI
 
                     // Conditionally display Shadow the Edgehog warning.
                     CheckShadowWarning(ref file);
-
+                    _lastOpenedDirectory = Path.GetDirectoryName(openFile);
                     // If this throws, or there is no file, an empty file is loaded instead.
                 }
                 catch { Archive = new Archive(CommonRWVersions.Heroes); }
@@ -115,10 +115,13 @@ namespace HeroesONE_R_GUI
             ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref oneArchive);
             if (archiveType == ONEArchiveType.Shadow050 || archiveType == ONEArchiveType.Shadow060 && _openedShadowArchive == false)
             {
-                _openedShadowArchive = true;
-                MessageBox.Show("Note: You are opening a Shadow The Hedgehog Archive.\n\n" +
-                                "For some of the .ONE files (such as shadow.one), Shadow The Hedgehog seems to expect a strict file order.\n\n" +
-                                "It is highly recommended you either use the Replace button or reimport the files in the same order as the original when creating new archives and reimporting.");
+                if (Properties.Settings.Default.HideWarnings == false)
+                {
+                    _openedShadowArchive = true;
+                    MessageBox.Show("Note: You are opening a Shadow The Hedgehog Archive.\n\n" +
+                                    "For some of the .ONE files (such as shadow.one), Shadow The Hedgehog seems to expect a strict file order.\n\n" +
+                                    "It is highly recommended you either use the Replace button or reimport the files in the same order as the original when creating new archives and reimporting.");
+                }
             }
 
         }
@@ -160,7 +163,8 @@ namespace HeroesONE_R_GUI
             {
                 Title = "Select the individual .ONE file to open.",
                 Multiselect = false,
-                IsFolderPicker = false
+                IsFolderPicker = false,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             CommonFileDialogFilter filter = new CommonFileDialogFilter("Sonic Heroes ONE Archive", ".one");
@@ -210,6 +214,8 @@ namespace HeroesONE_R_GUI
             {
                 byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
                 File.WriteAllBytes(fileDialog.FileName, heroesFile);
+                if (!Properties.Settings.Default.OpenAtCurrentFile)
+                    _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -296,13 +302,19 @@ namespace HeroesONE_R_GUI
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Pick file.
-            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog { Title = "Select the file to replace the current file contents with." };
+            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
+            {
+                Title = "Select the file to replace the current file contents with.",
+                InitialDirectory = _lastOpenedDirectory
+            };
             
             // Replace the file
             if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 byte[] newFile = File.ReadAllBytes(fileDialog.FileName);
                 ArchiveFile.CompressedData = Prs.Compress(ref newFile);
+                if (!Properties.Settings.Default.OpenAtCurrentFile)
+                    _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -395,7 +407,8 @@ namespace HeroesONE_R_GUI
             CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
             {
                 Title = "Select the files to add to the archive.",
-                Multiselect = true
+                Multiselect = true,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             // Load file(s)
@@ -406,7 +419,8 @@ namespace HeroesONE_R_GUI
                 {
                     Archive.Files.Add(new ArchiveFile(file));
                 });
-             
+                if (!Properties.Settings.Default.OpenAtCurrentFile)
+                    _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 UpdateGUI(ref Archive);
             }
         }
@@ -422,13 +436,16 @@ namespace HeroesONE_R_GUI
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
                 Title = "Select path to extract to.",
-                DefaultFileName = ArchiveFile.Name
+                DefaultFileName = ArchiveFile.Name,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             // Save the file to disk.
             if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 ArchiveFile.WriteToFile(fileDialog.FileName);
+                if (!Properties.Settings.Default.OpenAtCurrentFile)
+                    _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -516,6 +533,8 @@ namespace HeroesONE_R_GUI
             {
                 byte[] shadowFile = Archive.BuildShadowONEArchive(false).ToArray();
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
+                if (!Properties.Settings.Default.OpenAtCurrentFile)
+                    _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -537,6 +556,8 @@ namespace HeroesONE_R_GUI
             {
                 byte[] shadowFile = Archive.BuildShadowONEArchive(true).ToArray();
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
+                if (!Properties.Settings.Default.OpenAtCurrentFile)
+                    _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -575,7 +596,8 @@ namespace HeroesONE_R_GUI
             CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
             {
                 Title = "Select folder to extract to.",
-                IsFolderPicker = true
+                IsFolderPicker = true,
+                InitialDirectory = _lastOpenedDirectory
             };
 
             // Save the file(s) to disk.
@@ -586,6 +608,8 @@ namespace HeroesONE_R_GUI
                 {
                     string finalFilePath = Path.Combine(fileDialog.FileName, file.Name);
                     file.WriteToFile(finalFilePath);
+                    if (!Properties.Settings.Default.OpenAtCurrentFile)
+                        _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 });
             }
         }
@@ -691,6 +715,37 @@ namespace HeroesONE_R_GUI
             Heroes,
             Shadow50,
             Shadow60
+        }
+
+        private void hideWarningsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (hideWarningsToolStripMenuItem.Checked)
+                Properties.Settings.Default.HideWarnings = true;
+            else
+                Properties.Settings.Default.HideWarnings = false;
+            Properties.Settings.Default.Save();
+        }
+
+        private void filePickerStartsAtOpenedFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (filePickerStartsAtOpenedFileToolStripMenuItem.Checked)
+                Properties.Settings.Default.OpenAtCurrentFile = true;
+            else
+                Properties.Settings.Default.OpenAtCurrentFile = false;
+            Properties.Settings.Default.Save();
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.HideWarnings)
+                hideWarningsToolStripMenuItem.Checked = true;
+            else
+                hideWarningsToolStripMenuItem.Checked = false;
+
+            if (Properties.Settings.Default.OpenAtCurrentFile)
+                filePickerStartsAtOpenedFileToolStripMenuItem.Checked = true;
+            else
+                filePickerStartsAtOpenedFileToolStripMenuItem.Checked = false;
         }
     }
 }

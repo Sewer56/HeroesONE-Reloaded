@@ -72,6 +72,8 @@ namespace HeroesONE_R_GUI
             this.compressionSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enableAdaptiveCompressionLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manuallySetCompressionLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideWarningsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filePickerStartsAtOpenedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.box_MenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.changeRWVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -378,14 +380,14 @@ namespace HeroesONE_R_GUI
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.newToolStripMenuItem.Text = "New (Ctrl+N)";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.openToolStripMenuItem.Text = "Open (Ctrl+O)";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -394,21 +396,21 @@ namespace HeroesONE_R_GUI
             this.saveToolStripMenuItem.Checked = true;
             this.saveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveToolStripMenuItem.Text = "Save (Heroes)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveShadow050ToolStripMenuItem
             // 
             this.saveShadow050ToolStripMenuItem.Name = "saveShadow050ToolStripMenuItem";
-            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveShadow050ToolStripMenuItem.Text = "Save (Shadow 0.50)";
             this.saveShadow050ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow050ToolStripMenuItem_Click);
             // 
             // saveShadow060ToolStripMenuItem
             // 
             this.saveShadow060ToolStripMenuItem.Name = "saveShadow060ToolStripMenuItem";
-            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveShadow060ToolStripMenuItem.Text = "Save (Shadow 0.60)";
             this.saveShadow060ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow060ToolStripMenuItem_Click);
             // 
@@ -433,7 +435,9 @@ namespace HeroesONE_R_GUI
             this.categoryBar_OptionsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setArchiveRWVersionToolStripMenuItem,
             this.setAllFileRWVersionToolStripMenuItem,
-            this.compressionSettingsToolStripMenuItem});
+            this.compressionSettingsToolStripMenuItem,
+            this.hideWarningsToolStripMenuItem,
+            this.filePickerStartsAtOpenedFileToolStripMenuItem});
             this.categoryBar_OptionsMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_OptionsMenuItem.Name = "categoryBar_OptionsMenuItem";
             this.categoryBar_OptionsMenuItem.Size = new System.Drawing.Size(61, 20);
@@ -442,14 +446,14 @@ namespace HeroesONE_R_GUI
             // setArchiveRWVersionToolStripMenuItem
             // 
             this.setArchiveRWVersionToolStripMenuItem.Name = "setArchiveRWVersionToolStripMenuItem";
-            this.setArchiveRWVersionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.setArchiveRWVersionToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.setArchiveRWVersionToolStripMenuItem.Text = "Set Archive RW Version";
             this.setArchiveRWVersionToolStripMenuItem.Click += new System.EventHandler(this.setArchiveRWVersionToolStripMenuItem_Click);
             // 
             // setAllFileRWVersionToolStripMenuItem
             // 
             this.setAllFileRWVersionToolStripMenuItem.Name = "setAllFileRWVersionToolStripMenuItem";
-            this.setAllFileRWVersionToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.setAllFileRWVersionToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.setAllFileRWVersionToolStripMenuItem.Text = "Set All File RW Version";
             this.setAllFileRWVersionToolStripMenuItem.Click += new System.EventHandler(this.setAllFileRWVersionToolStripMenuItem_Click);
             // 
@@ -459,7 +463,7 @@ namespace HeroesONE_R_GUI
             this.enableAdaptiveCompressionLevelToolStripMenuItem,
             this.manuallySetCompressionLevelToolStripMenuItem});
             this.compressionSettingsToolStripMenuItem.Name = "compressionSettingsToolStripMenuItem";
-            this.compressionSettingsToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.compressionSettingsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
             this.compressionSettingsToolStripMenuItem.Text = "Compression Settings";
             // 
             // enableAdaptiveCompressionLevelToolStripMenuItem
@@ -478,6 +482,22 @@ namespace HeroesONE_R_GUI
             this.manuallySetCompressionLevelToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.manuallySetCompressionLevelToolStripMenuItem.Text = "Manually Set Compression Level";
             this.manuallySetCompressionLevelToolStripMenuItem.Click += new System.EventHandler(this.manuallySetCompressionLevelToolStripMenuItem_Click);
+            // 
+            // hideWarningsToolStripMenuItem
+            // 
+            this.hideWarningsToolStripMenuItem.CheckOnClick = true;
+            this.hideWarningsToolStripMenuItem.Name = "hideWarningsToolStripMenuItem";
+            this.hideWarningsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.hideWarningsToolStripMenuItem.Text = "Hide Warnings";
+            this.hideWarningsToolStripMenuItem.Click += new System.EventHandler(this.hideWarningsToolStripMenuItem_Click);
+            // 
+            // filePickerStartsAtOpenedFileToolStripMenuItem
+            // 
+            this.filePickerStartsAtOpenedFileToolStripMenuItem.CheckOnClick = true;
+            this.filePickerStartsAtOpenedFileToolStripMenuItem.Name = "filePickerStartsAtOpenedFileToolStripMenuItem";
+            this.filePickerStartsAtOpenedFileToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.filePickerStartsAtOpenedFileToolStripMenuItem.Text = "File Picker Starts At Opened File";
+            this.filePickerStartsAtOpenedFileToolStripMenuItem.Click += new System.EventHandler(this.filePickerStartsAtOpenedFileToolStripMenuItem_Click);
             // 
             // box_MenuStrip
             // 
@@ -551,6 +571,7 @@ namespace HeroesONE_R_GUI
             this.MainMenuStrip = this.categoryBar_MenuStrip;
             this.Name = "MainWindow";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).EndInit();
             this.titleBar_Panel.ResumeLayout(false);
@@ -601,6 +622,8 @@ namespace HeroesONE_R_GUI
         private System.Windows.Forms.ToolStripMenuItem saveShadow050ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveShadow060ToolStripMenuItem;
         private ToolStripMenuItem categoryBar_ExtractAll;
+        private ToolStripMenuItem hideWarningsToolStripMenuItem;
+        private ToolStripMenuItem filePickerStartsAtOpenedFileToolStripMenuItem;
     }
 }
 

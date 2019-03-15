@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Text;
 using HeroesONE_R.Structures.Common;
+using HeroesONE_R.Structures.Nights;
 using HeroesONE_R.Structures.ShadowTheHedgehog;
 using HeroesONE_R.Structures.SonicHeroes;
 using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
@@ -64,6 +62,7 @@ namespace HeroesONE_R.Structures
             ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref oneArchive);
 
             if (archiveType == ONEArchiveType.Heroes) { return new ONEArchive(ref oneArchive).GetArchive(); }
+            if (archiveType == ONEArchiveType.Nights) { return new ONENightsArchive(ref oneArchive).GetArchive(); }
             else { return new ONEShadowArchive(ref oneArchive).GetArchive(); }
         }
 
@@ -154,7 +153,7 @@ namespace HeroesONE_R.Structures
             ONEFileVersion fileVersion;
             int fileCount;
             ONEPadding padding;
-            List<IFileEntry> localFiles = new List<IFileEntry>();
+            List<IShadowFileEntry> localFiles = new List<IShadowFileEntry>();
             List<byte> fileData = new List<byte>(5000 * 1000); // 5MB default buffer size.
 
             // Header
@@ -181,7 +180,7 @@ namespace HeroesONE_R.Structures
             for (int x = 0; x < fileCount; x++)
             {
                 // Set file entry;
-                IFileEntry fileEntry;
+                IShadowFileEntry fileEntry;
                 if (isShadow60Archive) fileEntry = new ONE60FileEntry(Files[x].Name);
                 else fileEntry = new ONE50FileEntry(Files[x].Name);
 

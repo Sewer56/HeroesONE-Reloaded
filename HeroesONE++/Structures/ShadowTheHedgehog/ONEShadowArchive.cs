@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using HeroesONE_R.Structures.Common;
-using HeroesONE_R.Structures.SonicHeroes;
 using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
 using HeroesONE_R.Structures.Subsctructures;
 using HeroesONE_R.Utilities;
@@ -46,7 +41,7 @@ namespace HeroesONE_R.Structures.ShadowTheHedgehog
         /// <summary>
         /// Starts with two completely empty file entries.
         /// </summary>
-        public List<IFileEntry> Files;
+        public List<IShadowFileEntry> Files;
 
         /// <summary>
         /// Stores all of the individual files' raw data to be decompressed.
@@ -89,7 +84,7 @@ namespace HeroesONE_R.Structures.ShadowTheHedgehog
             oneShadowArchive.OnePadding = StructUtilities.ArrayToStructureUnsafe<ONEPadding>(ref file, pointer, ref pointer);
 
             // Populate the file list.
-            oneShadowArchive.Files = new List<IFileEntry>();
+            oneShadowArchive.Files = new List<IShadowFileEntry>();
 
             // Populate the individual files.
             // Here we will filter out our dummies by 

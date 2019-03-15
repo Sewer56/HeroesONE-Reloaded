@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
+﻿using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
 using HeroesONE_R.Utilities;
 
 namespace HeroesONE_R.Structures.Common
@@ -34,7 +28,16 @@ namespace HeroesONE_R.Structures.Common
             // If neither of the Shadow formats match, assume Heroes format.
             ONEArchiveTester oneArchiveTester = StructUtilities.ArrayToStructureUnsafe<ONEArchiveTester>(ref file);
 
-            // Dump string.
+            // Nights doesn't have the RenderWare header block before the string.
+            fixed (byte* versionStringPtr = file)
+            {
+                string oneVersionNights = StringUtilities.CharPointerToString(versionStringPtr);
+
+                if (oneVersionNights == "ThisIsOneFile")
+                    return ONEArchiveType.Nights;
+            }
+
+            // Otherwise it's not a Nights file.
             string oneVersion = StringUtilities.CharPointerToString(oneArchiveTester.OneVersion);
 
             switch (oneVersion)
@@ -70,6 +73,11 @@ namespace HeroesONE_R.Structures.Common
         /// <summary>
         /// One Ver 0.60
         /// </summary>
-        Shadow060
+        Shadow060,
+
+        /// <summary>
+        /// Nights: Journey Into Dreams
+        /// </summary>
+        Nights
     }
 }

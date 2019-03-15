@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HeroesONE_R.Utilities;
+﻿using HeroesONE_R.Utilities;
 
 namespace HeroesONE_R.Structures.ShadowTheHedgehog
 {

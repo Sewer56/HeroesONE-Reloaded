@@ -2,7 +2,7 @@
 
 namespace HeroesONE_R.Structures.ShadowTheHedgehog
 {
-    public unsafe struct ONE50FileEntry : IFileEntry
+    public unsafe struct ONE50FileEntry : IShadowFileEntry
     {
         /// <summary>
         /// Stores the name of the individual file. Ends with a null terminator.

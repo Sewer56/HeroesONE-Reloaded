@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text;
-using HeroesONE_R.Utilities;
+﻿using HeroesONE_R.Utilities;
 
 namespace HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures
 {

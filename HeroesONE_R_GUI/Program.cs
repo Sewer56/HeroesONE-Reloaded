@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Reloaded.IO;
+using Reloaded.Paths;
 
 namespace HeroesONE_R_GUI
 {
@@ -21,27 +23,14 @@ namespace HeroesONE_R_GUI
             SetDefault();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Fix Reloaded Theme missing
-            string reloadedConfigPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
-                "\\Reloaded-Mod-Loader\\Reloaded-Config";
-            string asmPath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\theme";
-            if (!File.Exists(Path.Combine(reloadedConfigPath, "Config.json")))
-            {
-                Directory.CreateDirectory(reloadedConfigPath + "\\Themes\\!Reloaded\\Fonts");
-                Directory.CreateDirectory(reloadedConfigPath + "\\Themes\\!Reloaded\\Images");
-                File.Copy(asmPath + "\\Config.json", reloadedConfigPath + "\\Config.json");
-                File.Copy(asmPath + "\\Themes\\!Reloaded\\Config.json", reloadedConfigPath + "\\Themes\\!Reloaded\\Config.json");
-                File.Copy(asmPath + "\\Themes\\!Reloaded\\Theme.json", reloadedConfigPath + "\\Themes\\!Reloaded\\Theme.json");
-                File.Copy(asmPath + "\\Themes\\!Reloaded\\Fonts\\CategoryFont.ttf", reloadedConfigPath + "\\Themes\\!Reloaded\\Fonts\\CategoryFont.ttf");
-                File.Copy(asmPath + "\\Themes\\!Reloaded\\Fonts\\TextFont.ttf", reloadedConfigPath + "\\Themes\\!Reloaded\\Fonts\\TextFont.ttf");
-                File.Copy(asmPath + "\\Themes\\!Reloaded\\Fonts\\TitleFont.ttf", reloadedConfigPath + "\\Themes\\!Reloaded\\Fonts\\TitleFont.ttf");
-                foreach (var file in Directory.GetFiles(asmPath + "\\Themes\\!Reloaded\\Images"))
-                {
-                    File.Copy(file, reloadedConfigPath + "\\Themes\\!Reloaded\\Images\\" + Path.GetFileName(file));
-                }
-            }
-            //Until lib is updated
 
+            // Copy Reloaded Default Theme if missing.
+            string themeFolderPath      = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Theme";
+
+            if (IsDirectoryEmpty(LoaderPaths.GetModLoaderThemeDirectory()))
+                DirectoryCopy(themeFolderPath, LoaderPaths.GetModLoaderThemeDirectory(), true);
+
+            // Boot
             if (args.Length > 0) { Application.Run(new MainWindow(args[0])); }
             else { Application.Run(new MainWindow()); }      
         }
@@ -64,6 +53,46 @@ namespace HeroesONE_R_GUI
             // Create default key for .one\shell\Open\command\
             var commandKey = oneKey.CreateSubKey("shell\\Open\\command");
             commandKey.SetValue("", command);
+        }
+
+        /// <summary>
+        /// Copies the contents of a directory to another directory.
+        /// </summary>
+        /// <param name="sourceDirName">The directory to copy from.</param>
+        /// <param name="destDirName">The directory to copy to.</param>
+        /// <param name="copySubDirs">If true, recursively copies subdirectories.</param>
+        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo directory             = new DirectoryInfo(sourceDirName);
+            DirectoryInfo[] subDirectories      = directory.GetDirectories();
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = directory.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string tempPath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(tempPath, true);
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in subDirectories)
+                {
+                    string tempPath = Path.Combine(destDirName, subdir.Name);
+                    Directory.CreateDirectory(tempPath);
+                    DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns true if a directory is empty.
+        /// </summary>
+        private static bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
     }
 }

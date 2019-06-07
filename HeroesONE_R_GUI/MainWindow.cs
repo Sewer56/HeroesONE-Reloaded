@@ -62,7 +62,16 @@ namespace HeroesONE_R_GUI
         /// Set to true once a shadow archive has been opened at least once.
         /// </summary>
         private bool _openedShadowArchive;
+
+        /// <summary>
+        /// Set to last used directory or open .one file directory, depending on the 'File Picker Starts At Opened File' option.
+        /// </summary>
         private string _lastOpenedDirectory;
+
+        /// <summary>
+        /// Set to last directory .one opened/saved in
+        /// </summary>
+        private string _lastONEDirectory;
 
         /// <summary>
         /// Sets up the current window and the Reloaded theme.
@@ -96,6 +105,7 @@ namespace HeroesONE_R_GUI
                     // Conditionally display Shadow the Edgehog warning.
                     CheckShadowWarning(ref file);
                     _lastOpenedDirectory = Path.GetDirectoryName(openFile);
+                    _lastONEDirectory = Path.GetDirectoryName(openFile);
                     // If this throws, or there is no file, an empty file is loaded instead.
                 }
                 catch { Archive = new Archive(CommonRWVersions.Heroes); }
@@ -188,6 +198,7 @@ namespace HeroesONE_R_GUI
                 // Set titlebar.
                 this.titleBar_Title.Text = Path.GetFileName(fileDialog.FileName);
                 _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
+                _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -216,6 +227,7 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(fileDialog.FileName, heroesFile);
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
+                _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -535,6 +547,7 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
+                _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -558,6 +571,7 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
+                _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
         }
 
@@ -633,6 +647,7 @@ namespace HeroesONE_R_GUI
                         else if (saveShadow060ToolStripMenuItem.Checked)
                             QuickSave(QuickSaveType.Shadow60);
 
+                        System.Media.SystemSounds.Beep.Play();
                         break;
                     }
                     case Keys.Control when e.KeyCode == Keys.S:
@@ -686,19 +701,19 @@ namespace HeroesONE_R_GUI
                     case QuickSaveType.Heroes:
                     {
                         byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
-                        File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
+                        File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
                         break;
                     }
                     case QuickSaveType.Shadow50:
                     {
                         byte[] shadow50File = Archive.BuildShadowONEArchive(false).ToArray();
-                        File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
+                        File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
                         break;
                     }
                     case QuickSaveType.Shadow60:
                     {
                         byte[] shadow60File = Archive.BuildShadowONEArchive(true).ToArray();
-                        File.WriteAllBytes(_lastOpenedDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
+                        File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
                         break;
                     }
                 }

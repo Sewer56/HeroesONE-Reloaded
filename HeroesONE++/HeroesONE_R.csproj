@@ -10,6 +10,10 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Description>An objectively superior to all previous library combination for reading and writing Sonic Heroes and Shadow The Hedgehog .ONE archives.</Description>
+    <Version>1.0.3</Version>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -63,8 +67,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="csharp-prs" Version="2.0.2" />
+    <PackageReference Include="csharp-prs" Version="2.1.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

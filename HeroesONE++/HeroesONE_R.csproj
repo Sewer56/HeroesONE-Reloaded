@@ -11,7 +11,7 @@
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Description>An objectively superior to all previous library combination for reading and writing Sonic Heroes and Shadow The Hedgehog .ONE archives.</Description>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
@@ -67,7 +67,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="csharp-prs" Version="2.1.0" />
+    <PackageReference Include="csharp-prs" Version="2.1.2" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
   </ItemGroup>
 

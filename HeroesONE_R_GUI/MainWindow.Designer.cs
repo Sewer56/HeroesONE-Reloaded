@@ -49,6 +49,7 @@ namespace HeroesONE_R_GUI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.titleBar_Title = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.categoryBar_Close = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.titleBar_RWVersion = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
@@ -380,14 +381,14 @@ namespace HeroesONE_R_GUI
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New (Ctrl+N)";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open (Ctrl+O)";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -396,21 +397,21 @@ namespace HeroesONE_R_GUI
             this.saveToolStripMenuItem.Checked = true;
             this.saveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save (Heroes)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveShadow050ToolStripMenuItem
             // 
             this.saveShadow050ToolStripMenuItem.Name = "saveShadow050ToolStripMenuItem";
-            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveShadow050ToolStripMenuItem.Text = "Save (Shadow 0.50)";
             this.saveShadow050ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow050ToolStripMenuItem_Click);
             // 
             // saveShadow060ToolStripMenuItem
             // 
             this.saveShadow060ToolStripMenuItem.Name = "saveShadow060ToolStripMenuItem";
-            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveShadow060ToolStripMenuItem.Text = "Save (Shadow 0.60)";
             this.saveShadow060ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow060ToolStripMenuItem_Click);
             // 
@@ -418,7 +419,7 @@ namespace HeroesONE_R_GUI
             // 
             this.categoryBar_ExtractAll.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_ExtractAll.Name = "categoryBar_ExtractAll";
-            this.categoryBar_ExtractAll.Size = new System.Drawing.Size(71, 20);
+            this.categoryBar_ExtractAll.Size = new System.Drawing.Size(72, 20);
             this.categoryBar_ExtractAll.Text = "Extract All";
             this.categoryBar_ExtractAll.Click += new System.EventHandler(this.categoryBar_ExtractAll_Click);
             // 
@@ -567,10 +568,11 @@ namespace HeroesONE_R_GUI
             this.Controls.Add(this.titleBar_Panel);
             this.Controls.Add(this.titleBar_StatusBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.categoryBar_MenuStrip;
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "HeroesONE Reloaded";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).EndInit();

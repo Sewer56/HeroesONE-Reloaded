@@ -20,7 +20,8 @@ namespace HeroesONE_R_GUI
         [STAThread]
         static void Main(string[] args)
         {
-            SetDefault();
+            try { SetDefault(); } catch (Exception) { /* Might fail on Wine */ }
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

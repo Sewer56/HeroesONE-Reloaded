@@ -1,8 +1,6 @@
-﻿using System;
-using System.Text;
-using HeroesONE_R.Utilities;
+﻿using HeroesONE_R.Utilities;
 
-namespace HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures
+namespace HeroesONE_R.Structures.SonicHeroes.ONE_Substructures
 {
     /// <summary>
     /// Defines the file name of an individual file inside a .ONE archive.

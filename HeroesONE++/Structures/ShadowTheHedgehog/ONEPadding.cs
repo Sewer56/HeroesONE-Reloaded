@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HeroesONE_R.Structures.ShadowTheHedgehog
+﻿namespace HeroesONE_R.Structures.ShadowTheHedgehog
 {
     /// <summary>
     /// Stores the padding used in each Shadow The Hedgehog ONE file after the initial headers.

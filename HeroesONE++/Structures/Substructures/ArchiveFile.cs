@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace HeroesONE_R.Structures.Subsctructures
+namespace HeroesONE_R.Structures.Substructures
 {
     public class ArchiveFile
     {

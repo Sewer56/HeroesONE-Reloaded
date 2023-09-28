@@ -1,21 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HeroesONE_R.Structures;
 using HeroesONE_R.Structures.Common;
-using HeroesONE_R.Structures.Subsctructures;
+using HeroesONE_R.Structures.Substructures;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Reloaded.Native.WinAPI;
-using Reloaded.Paths;
 using Reloaded_GUI.Styles.Themes;
 using Reloaded_GUI.Utilities.Windows;
 

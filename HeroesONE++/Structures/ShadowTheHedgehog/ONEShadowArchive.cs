@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using HeroesONE_R.Structures.Common;
-using HeroesONE_R.Structures.SonicHeroes;
-using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
-using HeroesONE_R.Structures.Subsctructures;
+using HeroesONE_R.Structures.SonicHeroes.ONE_Substructures;
+using HeroesONE_R.Structures.Substructures;
 using HeroesONE_R.Utilities;
 
 namespace HeroesONE_R.Structures.ShadowTheHedgehog

@@ -1,4 +1,4 @@
-﻿namespace HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures
+﻿namespace HeroesONE_R.Structures.SonicHeroes.ONE_Substructures
 {
     /// <summary>
     /// Contains the header for the ONE file.

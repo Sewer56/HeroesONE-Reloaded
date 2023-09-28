@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HeroesONE_R.Structures
+﻿namespace HeroesONE_R.Structures
 {
     /// <summary>
     /// A simple front-end for dlang-prs' front-end which is used to globally control the passed in

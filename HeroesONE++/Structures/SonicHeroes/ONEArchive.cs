@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HeroesONE_R.Structures.SonicHeroes.ONE_Subsctuctures;
-using HeroesONE_R.Structures.Subsctructures;
+using HeroesONE_R.Structures.SonicHeroes.ONE_Substructures;
+using HeroesONE_R.Structures.Substructures;
 using HeroesONE_R.Utilities;
 
 namespace HeroesONE_R.Structures.SonicHeroes

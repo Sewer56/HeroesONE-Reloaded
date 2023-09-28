@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +8,6 @@ using System.Windows.Forms;
 using HeroesONE_R.Structures;
 using HeroesONE_R.Structures.Common;
 using HeroesONE_R.Structures.Substructures;
-using HeroesONE_R_GUI.Controls;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -70,6 +70,13 @@ namespace HeroesONE_R_GUI
         private string _lastONEDirectory;
 
         /// <summary>
+        /// Internal Drag & Drop for moving cells with mouse
+        /// </summary>
+        private Rectangle dragBoxFromMouseDown;
+        private int rowIndexFromMouseDown;
+        private int rowIndexOfItemUnderMouseToDrop;
+
+        /// <summary>
         /// Sets up the current window and the Reloaded theme.
         /// </summary>
         /// <param name="openFile">Specifies the file to open on launch, if any.</param>
@@ -107,7 +114,7 @@ namespace HeroesONE_R_GUI
                 catch { Archive = new Archive(CommonRWVersions.Heroes); }
             }
             else
-            { Archive = new Archive(CommonRWVersions.Heroes); } 
+            { Archive = new Archive(CommonRWVersions.Heroes); }
         }
 
         /// <summary>
@@ -204,7 +211,7 @@ namespace HeroesONE_R_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
+        {
             // Pick ONE file.
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
@@ -315,7 +322,7 @@ namespace HeroesONE_R_GUI
                 Title = "Select the file to replace the current file contents with.",
                 InitialDirectory = _lastOpenedDirectory
             };
-            
+
             // Replace the file
             if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
@@ -333,7 +340,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void categoryBar_Close_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);  
+            Environment.Exit(0);
         }
 
         /// <summary>
@@ -379,7 +386,7 @@ namespace HeroesONE_R_GUI
 
                 if (e.Modifiers == Keys.Control)
                 {
-                    if (e.KeyCode == Keys.R) 
+                    if (e.KeyCode == Keys.R)
                         replaceToolStripMenuItem_Click(null, null);
 
                     else if (e.KeyCode == Keys.E)
@@ -577,9 +584,11 @@ namespace HeroesONE_R_GUI
         private void FileList_DragEnter(object sender, DragEventArgs e)
         {
             // Contains the paths to the individual files.
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.AllowedEffect == DragDropEffects.Move)
+                e.Effect = DragDropEffects.Move;
+            else if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.Copy;
-            else
+            else 
                 e.Effect = DragDropEffects.None;
         }
 
@@ -588,23 +597,49 @@ namespace HeroesONE_R_GUI
         /// </summary>
         private void FileList_DragDrop(object sender, DragEventArgs e)
         {
-            // Contains the paths to the individual files.
-            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+            // The mouse locations are relative to the screen, so they must be 
+            // converted to client coordinates.
+            Point clientPoint = box_FileList.PointToClient(new Point(e.X, e.Y));
 
-            try  {
-                var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
-                Parallel.ForEach(filePaths, options, file => {
-                    Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
-                });
-            }
-            catch (ArgumentOutOfRangeException) {
-                Parallel.ForEach(filePaths, options, file => {
-                    Archive.Files.Add(new ArchiveFile(file));
-                });
-            }
+            // Get the row index of the item the mouse is below. 
+            rowIndexOfItemUnderMouseToDrop =
+                box_FileList.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
 
+            // If the drag operation was a move then remove and insert the row.
+            if (e.Effect == DragDropEffects.Move)
+            {
+                if (rowIndexOfItemUnderMouseToDrop < 0)
+                {
+                    return;
+                }
+                ArchiveFile copy = Archive.Files[rowIndexFromMouseDown];
+                Archive.Files.RemoveAt(rowIndexFromMouseDown);
+                Archive.Files.Insert(rowIndexOfItemUnderMouseToDrop, copy);
+
+            } else if (e.Effect == DragDropEffects.Copy)
+            {
+                // Contains the paths to the individual files.
+                string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+                ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+
+                try
+                {
+                    var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
+                    Parallel.ForEach(filePaths, options, file =>
+                    {
+                        Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
+                    });
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Parallel.ForEach(filePaths, options, file =>
+                    {
+                        Archive.Files.Add(new ArchiveFile(file));
+                    });
+                }
+            }
             UpdateGUI(ref Archive);
+
         }
 
         private void categoryBar_ExtractAll_Click(object sender, EventArgs e)
@@ -639,34 +674,34 @@ namespace HeroesONE_R_GUI
                 switch (e.Modifiers)
                 {
                     case Keys.Shift when e.KeyCode == Keys.S:
-                    {
-                        // Quick Save (by current archive type, no confirmation)
-                        if (saveToolStripMenuItem.Checked)
-                            QuickSave(QuickSaveType.Heroes);
+                        {
+                            // Quick Save (by current archive type, no confirmation)
+                            if (saveToolStripMenuItem.Checked)
+                                QuickSave(QuickSaveType.Heroes);
 
-                        else if (saveShadow050ToolStripMenuItem.Checked)
-                            QuickSave(QuickSaveType.Shadow50);
+                            else if (saveShadow050ToolStripMenuItem.Checked)
+                                QuickSave(QuickSaveType.Shadow50);
 
-                        else if (saveShadow060ToolStripMenuItem.Checked)
-                            QuickSave(QuickSaveType.Shadow60);
+                            else if (saveShadow060ToolStripMenuItem.Checked)
+                                QuickSave(QuickSaveType.Shadow60);
 
-                        System.Media.SystemSounds.Beep.Play();
-                        break;
-                    }
+                            System.Media.SystemSounds.Beep.Play();
+                            break;
+                        }
                     case Keys.Control when e.KeyCode == Keys.S:
-                    {
-                        // Save (by current archive type)
-                        if (saveToolStripMenuItem.Checked)
-                            saveToolStripMenuItem_Click(null, null);
+                        {
+                            // Save (by current archive type)
+                            if (saveToolStripMenuItem.Checked)
+                                saveToolStripMenuItem_Click(null, null);
 
-                        else if (saveShadow050ToolStripMenuItem.Checked)
-                            saveShadow050ToolStripMenuItem_Click(null, null);
+                            else if (saveShadow050ToolStripMenuItem.Checked)
+                                saveShadow050ToolStripMenuItem_Click(null, null);
 
-                        else if (saveShadow060ToolStripMenuItem.Checked)
-                            saveShadow060ToolStripMenuItem_Click(null, null);
+                            else if (saveShadow060ToolStripMenuItem.Checked)
+                                saveShadow060ToolStripMenuItem_Click(null, null);
 
-                        break;
-                    }
+                            break;
+                        }
 
                     case Keys.Control when e.KeyCode == Keys.O:
                         openToolStripMenuItem_Click(null, null);
@@ -702,23 +737,23 @@ namespace HeroesONE_R_GUI
                 switch (type)
                 {
                     case QuickSaveType.Heroes:
-                    {
-                        byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
-                        File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
-                        break;
-                    }
+                        {
+                            byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
+                            File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, heroesFile);
+                            break;
+                        }
                     case QuickSaveType.Shadow50:
-                    {
-                        byte[] shadow50File = Archive.BuildShadowONEArchive(false).ToArray();
-                        File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
-                        break;
-                    }
+                        {
+                            byte[] shadow50File = Archive.BuildShadowONEArchive(false).ToArray();
+                            File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, shadow50File);
+                            break;
+                        }
                     case QuickSaveType.Shadow60:
-                    {
-                        byte[] shadow60File = Archive.BuildShadowONEArchive(true).ToArray();
-                        File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
-                        break;
-                    }
+                        {
+                            byte[] shadow60File = Archive.BuildShadowONEArchive(true).ToArray();
+                            File.WriteAllBytes(_lastONEDirectory + '\\' + this.titleBar_Title.Text, shadow60File);
+                            break;
+                        }
                 }
             }
             catch
@@ -727,7 +762,7 @@ namespace HeroesONE_R_GUI
                 MessageBox.Show("Save failed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        
+
         private enum QuickSaveType
         {
             Heroes,
@@ -764,6 +799,52 @@ namespace HeroesONE_R_GUI
                 filePickerStartsAtOpenedFileToolStripMenuItem.Checked = true;
             else
                 filePickerStartsAtOpenedFileToolStripMenuItem.Checked = false;
+        }
+
+        private void box_FileList_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Get the index of the item the mouse is below.
+            rowIndexFromMouseDown = box_FileList.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown != -1) {
+                // Remember the point where the mouse down occurred. 
+                // The DragSize indicates the size that the mouse can move 
+                // before a drag event should be started.                
+                Size dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                                                               e.Y - (dragSize.Height / 2)),
+                                    dragSize);
+            } else
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void box_FileList_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                // If the mouse moves outside the rectangle, start the drag.
+                if (dragBoxFromMouseDown != Rectangle.Empty &&
+                    !dragBoxFromMouseDown.Contains(e.X, e.Y))
+                {
+                    // Proceed with the drag and drop, passing in the list item.                    
+                    DragDropEffects dropEffect = box_FileList.DoDragDrop(
+                    box_FileList.Rows[rowIndexFromMouseDown],
+                    DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void box_FileList_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.AllowedEffect == DragDropEffects.Move)
+                e.Effect = DragDropEffects.Move;
+            else if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
         }
     }
 }

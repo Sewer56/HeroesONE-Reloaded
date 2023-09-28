@@ -317,7 +317,10 @@ namespace HeroesONE_R_GUI
             this.box_FileList.CustomDragDropEvent += new System.EventHandler<System.Windows.Forms.DragEventArgs>(this.FileList_DragDrop);
             this.box_FileList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.box_FileList_CellMouseClick);
             this.box_FileList.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileList_DragEnter);
+            this.box_FileList.DragOver += new System.Windows.Forms.DragEventHandler(this.box_FileList_DragOver);
             this.box_FileList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.box_FileList_KeyUp);
+            this.box_FileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseDown);
+            this.box_FileList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseMove);
             // 
             // fileName
             // 
@@ -381,14 +384,14 @@ namespace HeroesONE_R_GUI
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.newToolStripMenuItem.Text = "New (Ctrl+N)";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.openToolStripMenuItem.Text = "Open (Ctrl+O)";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -397,21 +400,21 @@ namespace HeroesONE_R_GUI
             this.saveToolStripMenuItem.Checked = true;
             this.saveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveToolStripMenuItem.Text = "Save (Heroes)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveShadow050ToolStripMenuItem
             // 
             this.saveShadow050ToolStripMenuItem.Name = "saveShadow050ToolStripMenuItem";
-            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveShadow050ToolStripMenuItem.Text = "Save (Shadow 0.50)";
             this.saveShadow050ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow050ToolStripMenuItem_Click);
             // 
             // saveShadow060ToolStripMenuItem
             // 
             this.saveShadow060ToolStripMenuItem.Name = "saveShadow060ToolStripMenuItem";
-            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveShadow060ToolStripMenuItem.Text = "Save (Shadow 0.60)";
             this.saveShadow060ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow060ToolStripMenuItem_Click);
             // 

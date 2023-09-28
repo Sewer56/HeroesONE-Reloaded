@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using HeroesONE_R.Structures;
 using HeroesONE_R.Structures.Common;
 using HeroesONE_R.Structures.Substructures;
+using HeroesONE_R_GUI.Controls;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -589,12 +590,19 @@ namespace HeroesONE_R_GUI
         {
             // Contains the paths to the individual files.
             string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-
             ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
-            Parallel.ForEach(filePaths, options, file =>
-            {
-                Archive.Files.Add(new ArchiveFile(file));
-            });
+
+            try  {
+                var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
+                Parallel.ForEach(filePaths, options, file => {
+                    Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
+                });
+            }
+            catch (ArgumentOutOfRangeException) {
+                Parallel.ForEach(filePaths, options, file => {
+                    Archive.Files.Add(new ArchiveFile(file));
+                });
+            }
 
             UpdateGUI(ref Archive);
         }

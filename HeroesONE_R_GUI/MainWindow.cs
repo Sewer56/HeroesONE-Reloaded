@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -845,6 +846,69 @@ namespace HeroesONE_R_GUI
                 e.Effect = DragDropEffects.Copy;
             else
                 e.Effect = DragDropEffects.None;
+        }
+
+        private void replaceSelectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This batch action will replace the selected file name in the current file across all .ones in the folder you pick (recursive).\n\n1. Choose the folder to modify .ones\n2. Choose the replacement file content");
+            try
+            {
+                ArchiveFile = Archive.Files[box_FileList.SelectedCells[0].RowIndex];
+            }
+            catch
+            {
+                return;
+            }
+            if (ArchiveFile == null)
+                return;
+            MessageBox.Show("File name match to modify:\n\n" + ArchiveFile.Name);
+            var folderDialog = new CommonOpenFileDialog
+            {
+                Title = "Select the folder to scan for .ones (recursive)",
+                InitialDirectory = _lastOpenedDirectory,
+                IsFolderPicker = true
+            };
+            if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
+                return;
+            string[] foundOnes = Directory.GetFiles(folderDialog.FileName, "*.one", SearchOption.AllDirectories);
+
+            var filePicker = new CommonOpenFileDialog
+            {
+                Title = "Select the file content to perform batch replacement",
+                InitialDirectory = _lastOpenedDirectory
+            };
+            if (filePicker.ShowDialog() != CommonFileDialogResult.Ok)
+                return;
+            byte[] replacementFile = File.ReadAllBytes(filePicker.FileName);
+            var prsCompressedDFF = Prs.Compress(ref replacementFile);
+            for (int i = 0; i < foundOnes.Length; i++)
+            {
+                byte[] readFile = File.ReadAllBytes(foundOnes[i]);
+                Archive currentONE = Archive.FromONEFile(ref readFile);
+                ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref readFile);
+                var targetFound = false;
+                for (int j = 0; j < currentONE.Files.Count; j++)
+                {
+                    if (currentONE.Files[j].Name.Equals(ArchiveFile.Name))
+                    {
+                        targetFound = true;
+                        currentONE.Files[j].CompressedData = prsCompressedDFF;
+                    }
+                }
+                List<byte> outputFile;
+                if (!targetFound)
+                    continue;
+
+                if (archiveType == ONEArchiveType.Shadow050)
+                    outputFile = currentONE.BuildShadowONEArchive(false);
+                else if (archiveType == ONEArchiveType.Shadow060)
+                    outputFile = currentONE.BuildShadowONEArchive(true);
+                else
+                    outputFile = currentONE.BuildHeroesONEArchive();
+
+                File.WriteAllBytes(foundOnes[i], outputFile.ToArray());
+            }
+            MessageBox.Show("DONE");
         }
     }
 }

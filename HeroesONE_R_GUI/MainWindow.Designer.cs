@@ -82,6 +82,8 @@ namespace HeroesONE_R_GUI
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleBar_StatusBar = new System.Windows.Forms.Panel();
+            this.categoryBar_BatchAction = new System.Windows.Forms.ToolStripMenuItem();
+            this.batchAction_replaceSelectedForManyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).BeginInit();
             this.titleBar_Panel.SuspendLayout();
             this.categoryBar_MenuStrip.SuspendLayout();
@@ -362,6 +364,7 @@ namespace HeroesONE_R_GUI
             this.categoryBar_FileMenuItem,
             this.categoryBar_ExtractAll,
             this.categoryBar_AddFiles,
+            this.categoryBar_BatchAction,
             this.categoryBar_OptionsMenuItem});
             this.categoryBar_MenuStrip.Location = new System.Drawing.Point(0, 42);
             this.categoryBar_MenuStrip.Name = "categoryBar_MenuStrip";
@@ -560,6 +563,22 @@ namespace HeroesONE_R_GUI
             this.titleBar_StatusBar.Size = new System.Drawing.Size(362, 30);
             this.titleBar_StatusBar.TabIndex = 16;
             // 
+            // categoryBar_BatchAction
+            // 
+            this.categoryBar_BatchAction.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.batchAction_replaceSelectedForManyToolStripMenuItem});
+            this.categoryBar_BatchAction.ForeColor = System.Drawing.Color.Silver;
+            this.categoryBar_BatchAction.Name = "categoryBar_BatchAction";
+            this.categoryBar_BatchAction.Size = new System.Drawing.Size(87, 20);
+            this.categoryBar_BatchAction.Text = "Batch Action";
+            // 
+            // batchAction_replaceSelectedForManyToolStripMenuItem
+            // 
+            this.batchAction_replaceSelectedForManyToolStripMenuItem.Name = "batchAction_replaceSelectedForManyToolStripMenuItem";
+            this.batchAction_replaceSelectedForManyToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.batchAction_replaceSelectedForManyToolStripMenuItem.Text = "Replace Selected for many";
+            this.batchAction_replaceSelectedForManyToolStripMenuItem.Click += new System.EventHandler(this.replaceSelectToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -629,6 +648,8 @@ namespace HeroesONE_R_GUI
         private ToolStripMenuItem categoryBar_ExtractAll;
         private ToolStripMenuItem hideWarningsToolStripMenuItem;
         private ToolStripMenuItem filePickerStartsAtOpenedFileToolStripMenuItem;
+        private ToolStripMenuItem categoryBar_BatchAction;
+        private ToolStripMenuItem batchAction_replaceSelectedForManyToolStripMenuItem;
     }
 }
 

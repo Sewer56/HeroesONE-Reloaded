@@ -101,7 +101,7 @@ namespace HeroesONE_R_GUI
                 {
                     // Attempt to load the file from disk, parse the .ONE archive and update the GUI.
                     byte[] file = File.ReadAllBytes(openFile);
-                    Archive = Archive.FromONEFile(ref file);
+                    Archive = Archive.FromONEFile(file);
                     UpdateGUI(ref Archive);
                     this.titleBar_Title.Text = Path.GetFileName(openFile);
                     SetCheckboxHint(ref file);
@@ -190,7 +190,7 @@ namespace HeroesONE_R_GUI
                 // Reset archive, load new archive in.
                 ResetONEArchive();
                 byte[] oneFile = File.ReadAllBytes(fileDialog.FileName);
-                Archive = Archive.FromONEFile(ref oneFile);
+                Archive = Archive.FromONEFile(oneFile);
 
                 // Update the GUI
                 UpdateGUI(ref Archive);
@@ -884,7 +884,7 @@ namespace HeroesONE_R_GUI
             for (int i = 0; i < foundOnes.Length; i++)
             {
                 byte[] readFile = File.ReadAllBytes(foundOnes[i]);
-                Archive currentONE = Archive.FromONEFile(ref readFile);
+                Archive currentONE = Archive.FromONEFile(readFile);
                 ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref readFile);
                 var targetFound = false;
                 for (int j = 0; j < currentONE.Files.Count; j++)

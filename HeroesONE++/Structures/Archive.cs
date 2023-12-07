@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using HeroesONE_R.Structures.Common;
@@ -26,6 +27,11 @@ namespace HeroesONE_R.Structures
         /// Equivalent to the file count.
         /// </summary>
         public List<ArchiveFile> Files;
+
+        /// <summary>
+        /// Type of archive this originally was.
+        /// </summary>
+        public ONEArchiveType OriginalArchiveType;
 
         private Archive()
         {
@@ -55,15 +61,32 @@ namespace HeroesONE_R.Structures
         /// you an instance of Archive.
         /// </summary>
         /// <returns></returns>
-        public static unsafe Archive FromONEFile(ref byte[] oneArchive)
+        public static unsafe Archive FromONEFile(byte[] oneArchive)
         {
             // Know if we're dealing with Shadow050 or Shadow060
             ONEArchiveType archiveType = ONEArchiveTester.GetArchiveType(ref oneArchive);
 
-            if (archiveType == ONEArchiveType.Heroes) { return new ONEArchive(ref oneArchive).GetArchive(); }
-            else { return new ONEShadowArchive(ref oneArchive).GetArchive(); }
+            var archive = archiveType == ONEArchiveType.Heroes 
+                ? new ONEArchive(ref oneArchive).GetArchive() 
+                : new ONEShadowArchive(ref oneArchive).GetArchive();
+            archive.OriginalArchiveType = archiveType;
+            return archive;
         }
 
+        /// <summary>
+        /// Rebuilds the archive using the original type it was.
+        /// </summary>
+        public List<byte> BuildArchiveWithOriginalType()
+        {
+            return OriginalArchiveType switch
+            {
+                ONEArchiveType.Heroes => BuildHeroesONEArchive(),
+                ONEArchiveType.Shadow050 => BuildShadowONEArchive(false),
+                ONEArchiveType.Shadow060 => BuildShadowONEArchive(true),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+        
         /// <summary>
         /// Generates a Heroes ONE archive from the provided HeroesONE Archive structure.
         /// </summary>

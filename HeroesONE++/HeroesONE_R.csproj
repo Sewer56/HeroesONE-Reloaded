@@ -12,6 +12,7 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Description>An objectively superior to all previous library combination for reading and writing Sonic Heroes and Shadow The Hedgehog .ONE archives.</Description>
     <Version>1.0.6</Version>
+    <LangVersion>preview</LangVersion>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>

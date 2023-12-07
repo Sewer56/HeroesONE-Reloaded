@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroesONE_R_GUI", "HeroesON
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeroesONE_R", "HeroesONE++\HeroesONE_R.csproj", "{5704475B-358F-49E6-BA5A-78CA4FAE85E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeroesONE_R_CLI", "HeroesONE_R_CLI\HeroesONE_R_CLI.csproj", "{3500C846-CC60-4020-B7ED-491947D667E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,22 @@ Global
 		{5704475B-358F-49E6-BA5A-78CA4FAE85E9}.Release|x64.Build.0 = Release|x64
 		{5704475B-358F-49E6-BA5A-78CA4FAE85E9}.Release|x86.ActiveCfg = Release|x86
 		{5704475B-358F-49E6-BA5A-78CA4FAE85E9}.Release|x86.Build.0 = Release|x86
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|Win32.Build.0 = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|x64.Build.0 = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Debug|x86.Build.0 = Debug|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|Win32.ActiveCfg = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|Win32.Build.0 = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|x64.ActiveCfg = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|x64.Build.0 = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{3500C846-CC60-4020-B7ED-491947D667E3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -76,6 +76,7 @@ namespace HeroesONE_R_GUI
         private Rectangle dragBoxFromMouseDown;
         private int rowIndexFromMouseDown;
         private int rowIndexOfItemUnderMouseToDrop;
+        private bool filePickerWasActive = false;
 
         /// <summary>
         /// Sets up the current window and the Reloaded theme.
@@ -213,6 +214,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Pick ONE file.
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
@@ -233,6 +235,7 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
+            ClearFilePickerWasActive();
         }
 
         /// <summary>
@@ -296,6 +299,8 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void box_FileList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             if (e.Button == MouseButtons.Right)
             {
                 // Gets our individual file to manipulate.
@@ -317,6 +322,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Pick file.
             CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
             {
@@ -332,6 +338,7 @@ namespace HeroesONE_R_GUI
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
+            ClearFilePickerWasActive();
         }
 
         /// <summary>
@@ -419,6 +426,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void categoryBar_AddFiles_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Pick file(s)
             CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
             {
@@ -439,6 +447,7 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 UpdateGUI(ref Archive);
             }
+            ClearFilePickerWasActive();
         }
 
         /// <summary>
@@ -448,6 +457,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void extractToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Select path to extract to.
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
@@ -463,6 +473,7 @@ namespace HeroesONE_R_GUI
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
+            ClearFilePickerWasActive();
         }
 
         /// <summary>
@@ -525,14 +536,17 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Get file name.
             RenameDialog searchBufferDialog = new RenameDialog(ArchiveFile.Name);
             ArchiveFile.Name = searchBufferDialog.ShowDialog();
             UpdateGUI(ref Archive);
+            ClearFilePickerWasActive();
         }
 
         private void saveShadow050ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Pick ONE file.
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
@@ -553,10 +567,12 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
+            ClearFilePickerWasActive();
         }
 
         private void saveShadow060ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Pick ONE file.
             CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
             {
@@ -577,6 +593,7 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
+            ClearFilePickerWasActive();
         }
 
         /// <summary>
@@ -584,6 +601,8 @@ namespace HeroesONE_R_GUI
         /// </summary>
         private void FileList_DragEnter(object sender, DragEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             // Contains the paths to the individual files.
             if (e.AllowedEffect == DragDropEffects.Move)
                 e.Effect = DragDropEffects.Move;
@@ -598,6 +617,8 @@ namespace HeroesONE_R_GUI
         /// </summary>
         private void FileList_DragDrop(object sender, DragEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             // The mouse locations are relative to the screen, so they must be 
             // converted to client coordinates.
             Point clientPoint = box_FileList.PointToClient(new Point(e.X, e.Y));
@@ -645,6 +666,7 @@ namespace HeroesONE_R_GUI
 
         private void categoryBar_ExtractAll_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             // Select path to extract to.
             CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
             {
@@ -665,6 +687,7 @@ namespace HeroesONE_R_GUI
                         _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 });
             }
+            ClearFilePickerWasActive();
         }
 
         // Other Keyboard shortcuts
@@ -804,6 +827,8 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_MouseDown(object sender, MouseEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             // Get the index of the item the mouse is below.
             rowIndexFromMouseDown = box_FileList.HitTest(e.X, e.Y).RowIndex;
             if (rowIndexFromMouseDown != -1) {
@@ -824,6 +849,8 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_MouseMove(object sender, MouseEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
                 // If the mouse moves outside the rectangle, start the drag.
@@ -840,6 +867,8 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_DragOver(object sender, DragEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             if (e.AllowedEffect == DragDropEffects.Move)
                 e.Effect = DragDropEffects.Move;
             else if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -850,6 +879,7 @@ namespace HeroesONE_R_GUI
 
         private void replaceSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            filePickerWasActive = true;
             MessageBox.Show("This batch action will replace the selected file name in the current file across all .ones in the folder you pick (recursive).\n\n1. Choose the folder to modify .ones\n2. Choose the replacement file content");
             try
             {
@@ -909,6 +939,13 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(foundOnes[i], outputFile.ToArray());
             }
             MessageBox.Show("DONE");
+            ClearFilePickerWasActive();
+        }
+
+        private async Task ClearFilePickerWasActive(int milliseconds = 500)
+        {
+            await Task.Delay(milliseconds);
+            filePickerWasActive = false;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -269,7 +270,15 @@ namespace HeroesONE_R_GUI
             // Get selected row if possible.
             int selectedRow = -1;
             if (box_FileList.SelectedCells.Count > 0)
-            { selectedRow = box_FileList.SelectedCells[0].RowIndex; }
+            {
+                selectedRow = box_FileList.SelectedCells[0].RowIndex;
+            }
+
+            int lastFirstDisplayedScrollingRowIndex = -1;
+            if (box_FileList.RowCount != 0)
+            {
+                lastFirstDisplayedScrollingRowIndex = box_FileList.FirstDisplayedScrollingRowIndex;
+            }
 
             // Update list
             box_FileList.Rows.Clear();
@@ -287,7 +296,13 @@ namespace HeroesONE_R_GUI
             try
             {
                 if (selectedRow != -1)
-                { box_FileList.Rows[selectedRow].Selected = true; }
+                { 
+                    box_FileList.Rows[selectedRow].Selected = true;
+                    if (lastFirstDisplayedScrollingRowIndex == -1)
+                        box_FileList.FirstDisplayedScrollingRowIndex = selectedRow;
+                    else
+                        box_FileList.FirstDisplayedScrollingRowIndex = lastFirstDisplayedScrollingRowIndex;
+                }
             }
             catch { }
         }
@@ -946,6 +961,48 @@ namespace HeroesONE_R_GUI
         {
             await Task.Delay(milliseconds);
             filePickerWasActive = false;
+        }
+
+        private string[] shadowOneExtensionOrder =
+        [
+            "SNB",
+            "EFD",
+            "DFF",
+            "TXD",
+            "UVA",
+            "BIN",
+            "CCL",
+            "BON",
+            "MTN",
+            "MTP",
+            "DMA",
+            "PTP",
+            "BDT",
+            "ADB",
+            "GNCP"
+        ];
+
+        private void SortByExtensionsShadowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Archive == null || Archive.Files.Count == 0)
+                return;
+            List<ArchiveFile> sortedData = [];
+            foreach (var extension in shadowOneExtensionOrder)
+            {
+                foreach (var file in Archive.Files)
+                {
+                    if (file.Name.EndsWith(extension))
+                    {
+                        sortedData.Add(file);
+                    }
+                }
+            }
+            if (Archive.Files.Count != sortedData.Count)
+            {
+                MessageBox.Show("Warning! Unsupported extensions were found in the file, and deleted after the sort operation.\nPlease report this to the developers!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            Archive.Files = sortedData;
+            UpdateGUI(ref Archive);
         }
     }
 }

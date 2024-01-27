@@ -15,6 +15,7 @@ using Ookii.Dialogs.WinForms;
 using Reloaded.Native.WinAPI;
 using Reloaded_GUI.Styles.Themes;
 using Reloaded_GUI.Utilities.Windows;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HeroesONE_R_GUI
 {
@@ -1041,6 +1042,13 @@ namespace HeroesONE_R_GUI
         private void resizeButton_MouseUp(object sender, MouseEventArgs e)
         {
             mov = false;
+        }
+
+        private void box_FileList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var temp = Path.Combine(Path.GetTempPath(), Archive.Files[e.RowIndex].Name);
+            File.WriteAllBytes(temp, Archive.Files[e.RowIndex].DecompressThis());
+            System.Diagnostics.Process.Start(temp);
         }
     }
 }

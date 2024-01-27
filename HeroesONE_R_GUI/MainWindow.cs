@@ -15,6 +15,7 @@ using Ookii.Dialogs.WinForms;
 using Reloaded.Native.WinAPI;
 using Reloaded_GUI.Styles.Themes;
 using Reloaded_GUI.Utilities.Windows;
+using static System.Windows.Forms.Design.AxImporter;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HeroesONE_R_GUI
@@ -654,23 +655,35 @@ namespace HeroesONE_R_GUI
             } else if (e.Effect == DragDropEffects.Copy)
             {
                 // Contains the paths to the individual files.
-                string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-                ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
+                List<string> addedFilePaths = ((string[])e.Data.GetData(DataFormats.FileDrop, false)).ToList();
 
-                try
+                for (int i = 0; i < Archive.Files.Count; i++)
                 {
-                    var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
-                    Parallel.ForEach(filePaths, options, file =>
+                    for (int j = addedFilePaths.Count - 1; j >= 0; j--)
                     {
-                        Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
-                    });
+                        if (Archive.Files[i].Name.Equals(Path.GetFileName(addedFilePaths[j]), StringComparison.OrdinalIgnoreCase))
+                        {
+                            var data = File.ReadAllBytes(addedFilePaths[j]);
+                            Archive.Files[i].CompressedData = Prs.Compress(ref data);
+                            addedFilePaths.RemoveAt(j);
+                            break;
+                        }
+                    }
+                    if (addedFilePaths.Count == 0)
+                        break;
                 }
-                catch (ArgumentOutOfRangeException)
+
+                foreach (var file in addedFilePaths)
                 {
-                    Parallel.ForEach(filePaths, options, file =>
+                    try
+                    {
+                        var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
+                        Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
+                    }
+                    catch (ArgumentOutOfRangeException)
                     {
                         Archive.Files.Add(new ArchiveFile(file));
-                    });
+                    }
                 }
             }
             UpdateGUI(ref Archive);
@@ -1046,6 +1059,8 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (filePickerWasActive)
+                return;
             var temp = Path.Combine(Path.GetTempPath(), Archive.Files[e.RowIndex].Name);
             File.WriteAllBytes(temp, Archive.Files[e.RowIndex].DecompressThis());
             System.Diagnostics.Process.Start(temp);

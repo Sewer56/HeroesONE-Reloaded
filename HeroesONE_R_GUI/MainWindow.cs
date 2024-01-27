@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlTypes;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,7 +11,7 @@ using HeroesONE_R.Structures.Common;
 using HeroesONE_R.Structures.Substructures;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
-using Microsoft.WindowsAPICodePack.Dialogs;
+using Ookii.Dialogs.WinForms;
 using Reloaded.Native.WinAPI;
 using Reloaded_GUI.Styles.Themes;
 using Reloaded_GUI.Utilities.Windows;
@@ -118,6 +117,10 @@ namespace HeroesONE_R_GUI
             }
             else
             { Archive = new Archive(CommonRWVersions.Heroes); }
+
+            // hack to resize post init, due to custom component resizing issues
+            Width = 362;
+            Height = 522;
         }
 
         /// <summary>
@@ -175,19 +178,17 @@ namespace HeroesONE_R_GUI
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Pick ONE file.
-            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
+            VistaOpenFileDialog fileDialog = new()
             {
-                Title = "Select the individual .ONE file to open.",
+                Title = "Select the individual .ONE file to open",
                 Multiselect = false,
-                IsFolderPicker = false,
-                InitialDirectory = _lastOpenedDirectory
+                InitialDirectory = _lastOpenedDirectory,
+                DefaultExt = ".one",
+                Filter = "ONE Archive (*.one)|*.one|All files (*.*)|*.*",
             };
 
-            CommonFileDialogFilter filter = new CommonFileDialogFilter("Sonic Heroes ONE Archive", ".one");
-            fileDialog.Filters.Add(filter);
-
             // Load it if selected.
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Reset archive, load new archive in.
                 ResetONEArchive();
@@ -217,18 +218,17 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Pick ONE file.
-            CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
+            VistaSaveFileDialog fileDialog = new()
             {
                 Title = "Save Heroes .ONE File",
-                DefaultFileName = this.titleBar_Title.Text,
-                InitialDirectory = _lastOpenedDirectory
+                FileName = this.titleBar_Title.Text,
+                InitialDirectory = _lastOpenedDirectory,
+                DefaultExt = ".one",
+                Filter = "Sonic Heroes ONE Archive (*.one)|*.one|All files (*.*)|*.*",
             };
 
-            CommonFileDialogFilter filter = new CommonFileDialogFilter("Sonic Heroes ONE Archive", ".one");
-            fileDialog.Filters.Add(filter);
-
             // Save the file to disk.
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 byte[] heroesFile = Archive.BuildHeroesONEArchive().ToArray();
                 File.WriteAllBytes(fileDialog.FileName, heroesFile);
@@ -339,14 +339,15 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Pick file.
-            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
+            VistaOpenFileDialog fileDialog = new()
             {
-                Title = "Select the file to replace the current file contents with.",
-                InitialDirectory = _lastOpenedDirectory
+                Title = "Select the file to replace the current file contents with",
+                Multiselect = false,
+                InitialDirectory = _lastOpenedDirectory,
             };
 
             // Replace the file
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 byte[] newFile = File.ReadAllBytes(fileDialog.FileName);
                 ArchiveFile.CompressedData = Prs.Compress(ref newFile);
@@ -443,15 +444,15 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Pick file(s)
-            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
+            VistaOpenFileDialog fileDialog = new()
             {
-                Title = "Select the files to add to the archive.",
+                Title = "Select the files to add to the archive",
                 Multiselect = true,
-                InitialDirectory = _lastOpenedDirectory
+                InitialDirectory = _lastOpenedDirectory,
             };
 
             // Load file(s)
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
                 Parallel.ForEach(fileDialog.FileNames, options, file =>
@@ -474,15 +475,15 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Select path to extract to.
-            CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
+            VistaSaveFileDialog fileDialog = new()
             {
-                Title = "Select path to extract to.",
-                DefaultFileName = ArchiveFile.Name,
-                InitialDirectory = _lastOpenedDirectory
+                Title = "Select path to extract to",
+                FileName = ArchiveFile.Name,
+                InitialDirectory = _lastOpenedDirectory,
             };
 
             // Save the file to disk.
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 ArchiveFile.WriteToFile(fileDialog.FileName);
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
@@ -563,18 +564,16 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Pick ONE file.
-            CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
+            VistaSaveFileDialog fileDialog = new()
             {
                 Title = "Save Shadow 0.50 .ONE File",
-                DefaultFileName = this.titleBar_Title.Text,
-                InitialDirectory = _lastOpenedDirectory
+                FileName = this.titleBar_Title.Text,
+                InitialDirectory = _lastOpenedDirectory,
+                Filter = "Shadow The Hedgehog 0.50 ONE Archive (*.one)|*.one|All files (*.*)|*.*",
             };
 
-            CommonFileDialogFilter filter = new CommonFileDialogFilter("Shadow The Hedgehog ONE Archive", ".one");
-            fileDialog.Filters.Add(filter);
-
             // Save the file to disk.
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 byte[] shadowFile = Archive.BuildShadowONEArchive(false).ToArray();
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
@@ -589,18 +588,16 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Pick ONE file.
-            CommonSaveFileDialog fileDialog = new CommonSaveFileDialog
+            VistaSaveFileDialog fileDialog = new()
             {
                 Title = "Save Shadow 0.60 .ONE File",
-                DefaultFileName = this.titleBar_Title.Text,
-                InitialDirectory = _lastOpenedDirectory
+                FileName = this.titleBar_Title.Text,
+                InitialDirectory = _lastOpenedDirectory,
+                Filter = "Shadow The Hedgehog 0.60 ONE Archive (*.one)|*.one|All files (*.*)|*.*",
             };
 
-            CommonFileDialogFilter filter = new CommonFileDialogFilter("Shadow The Hedgehog ONE Archive", ".one");
-            fileDialog.Filters.Add(filter);
-
             // Save the file to disk.
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 byte[] shadowFile = Archive.BuildShadowONEArchive(true).ToArray();
                 File.WriteAllBytes(fileDialog.FileName, shadowFile);
@@ -683,23 +680,23 @@ namespace HeroesONE_R_GUI
         {
             filePickerWasActive = true;
             // Select path to extract to.
-            CommonOpenFileDialog fileDialog = new CommonOpenFileDialog
+            VistaFolderBrowserDialog fileDialog = new()
             {
-                Title = "Select folder to extract to.",
-                IsFolderPicker = true,
-                InitialDirectory = _lastOpenedDirectory
+                Description = "Select folder to extract to",
+                UseDescriptionForTitle = true,
+                SelectedPath = _lastOpenedDirectory,
             };
 
             // Save the file(s) to disk.
-            if (fileDialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 ParallelOptions options = new ParallelOptions() { MaxDegreeOfParallelism = Environment.ProcessorCount };
                 Parallel.ForEach(Archive.Files, options, file =>
                 {
-                    string finalFilePath = Path.Combine(fileDialog.FileName, file.Name);
+                    string finalFilePath = Path.Combine(fileDialog.SelectedPath, file.Name);
                     file.WriteToFile(finalFilePath);
                     if (!Properties.Settings.Default.OpenAtCurrentFile)
-                        _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
+                        _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.SelectedPath);
                 });
             }
             ClearFilePickerWasActive();
@@ -907,22 +904,24 @@ namespace HeroesONE_R_GUI
             if (ArchiveFile == null)
                 return;
             MessageBox.Show("File name match to modify:\n\n" + ArchiveFile.Name);
-            var folderDialog = new CommonOpenFileDialog
+            VistaFolderBrowserDialog folderDialog = new()
             {
-                Title = "Select the folder to scan for .ones (recursive)",
-                InitialDirectory = _lastOpenedDirectory,
-                IsFolderPicker = true
+                Description = "Select the folder to scan for .ones (recursive)",
+                UseDescriptionForTitle = true,
+                SelectedPath = _lastOpenedDirectory,
             };
-            if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
+            if (folderDialog.ShowDialog() != DialogResult.OK)
                 return;
-            string[] foundOnes = Directory.GetFiles(folderDialog.FileName, "*.one", SearchOption.AllDirectories);
+            string[] foundOnes = Directory.GetFiles(folderDialog.SelectedPath, "*.one", SearchOption.AllDirectories);
 
-            var filePicker = new CommonOpenFileDialog
+            VistaOpenFileDialog filePicker = new()
             {
                 Title = "Select the file content to perform batch replacement",
-                InitialDirectory = _lastOpenedDirectory
+                Multiselect = false,
+                InitialDirectory = _lastOpenedDirectory,
+                Filter = "All files (*.*)|*.*",
             };
-            if (filePicker.ShowDialog() != CommonFileDialogResult.Ok)
+            if (filePicker.ShowDialog() != DialogResult.OK)
                 return;
             byte[] replacementFile = File.ReadAllBytes(filePicker.FileName);
             var prsCompressedDFF = Prs.Compress(ref replacementFile);
@@ -1003,6 +1002,45 @@ namespace HeroesONE_R_GUI
             }
             Archive.Files = sortedData;
             UpdateGUI(ref Archive);
+        }
+
+        int Mx;
+        int My;
+        int Cw;
+        int Ch;
+        int Sw;
+        int Sh;
+
+        bool mov;
+
+        private void resizeButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            mov = true;
+            My = MousePosition.Y;
+            Mx = MousePosition.X;
+            Cw = ClientSize.Width;
+            Ch = ClientSize.Height;
+            Sw = Width;
+            Sh = Height;
+        }
+
+        private void resizeButton_MouseLeave(object sender, EventArgs e)
+        {
+            mov = false;
+        }
+
+        private void resizeButton_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mov == true)
+            {
+                ClientSize = new Size(MousePosition.X - Mx + Cw, MousePosition.Y - My + Ch);
+                Size = new Size(MousePosition.X - Mx + Sw, MousePosition.Y - My + Sh);
+            }
+        }
+
+        private void resizeButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            mov = false;
         }
     }
 }

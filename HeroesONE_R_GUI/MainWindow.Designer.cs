@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace HeroesONE_R_GUI
 {
@@ -46,6 +46,9 @@ namespace HeroesONE_R_GUI
             Reloaded_GUI.Styles.Animation.AnimProperties animProperties5 = new Reloaded_GUI.Styles.Animation.AnimProperties();
             Reloaded_GUI.Styles.Animation.AnimMessage animMessage9 = new Reloaded_GUI.Styles.Animation.AnimMessage();
             Reloaded_GUI.Styles.Animation.AnimMessage animMessage10 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimProperties animProperties6 = new Reloaded_GUI.Styles.Animation.AnimProperties();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage11 = new Reloaded_GUI.Styles.Animation.AnimMessage();
+            Reloaded_GUI.Styles.Animation.AnimMessage animMessage12 = new Reloaded_GUI.Styles.Animation.AnimMessage();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -53,6 +56,7 @@ namespace HeroesONE_R_GUI
             this.titleBar_Title = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.categoryBar_Close = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.titleBar_RWVersion = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
+            this.resizeButton = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.titleBar_ItemCount = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.box_FileList = new HeroesONE_R_GUI.Controls.CustomDataGridView();
             this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +73,7 @@ namespace HeroesONE_R_GUI
             this.categoryBar_AddFiles = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryBar_Actions = new System.Windows.Forms.ToolStripMenuItem();
             this.batchAction_replaceSelectedForManyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortByExtensionsShadowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryBar_OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setArchiveRWVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setAllFileRWVersionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +89,6 @@ namespace HeroesONE_R_GUI
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleBar_StatusBar = new System.Windows.Forms.Panel();
-            this.sortByExtensionsShadowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).BeginInit();
             this.titleBar_Panel.SuspendLayout();
             this.categoryBar_MenuStrip.SuspendLayout();
@@ -124,7 +128,7 @@ namespace HeroesONE_R_GUI
             this.titleBar_Title.IgnoreMouseClicks = false;
             this.titleBar_Title.Location = new System.Drawing.Point(0, 0);
             this.titleBar_Title.Name = "titleBar_Title";
-            this.titleBar_Title.Size = new System.Drawing.Size(362, 42);
+            this.titleBar_Title.Size = new System.Drawing.Size(1556, 42);
             this.titleBar_Title.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.titleBar_Title.TabIndex = 4;
             this.titleBar_Title.Text = "HeroesONE Reloaded";
@@ -152,6 +156,7 @@ namespace HeroesONE_R_GUI
             this.categoryBar_Close.AnimProperties = animProperties2;
             this.categoryBar_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.categoryBar_Close.CaptureChildren = false;
+            this.categoryBar_Close.Dock = System.Windows.Forms.DockStyle.Right;
             this.categoryBar_Close.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.categoryBar_Close.FlatAppearance.BorderSize = 0;
             this.categoryBar_Close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -161,9 +166,9 @@ namespace HeroesONE_R_GUI
             this.categoryBar_Close.ForeColor = System.Drawing.Color.White;
             this.categoryBar_Close.IgnoreMouse = false;
             this.categoryBar_Close.IgnoreMouseClicks = false;
-            this.categoryBar_Close.Location = new System.Drawing.Point(332, 0);
+            this.categoryBar_Close.Location = new System.Drawing.Point(1526, 0);
             this.categoryBar_Close.Name = "categoryBar_Close";
-            this.categoryBar_Close.Size = new System.Drawing.Size(30, 30);
+            this.categoryBar_Close.Size = new System.Drawing.Size(30, 42);
             this.categoryBar_Close.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.categoryBar_Close.TabIndex = 52;
             this.categoryBar_Close.Text = "X";
@@ -212,25 +217,69 @@ namespace HeroesONE_R_GUI
             this.titleBar_RWVersion.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.titleBar_RWVersion.UseVisualStyleBackColor = true;
             // 
+            // resizeButton
+            // 
+            animMessage7.Control = this.resizeButton;
+            animMessage7.PlayAnimation = false;
+            animProperties4.BackColorMessage = animMessage7;
+            animMessage8.Control = this.resizeButton;
+            animMessage8.PlayAnimation = false;
+            animProperties4.ForeColorMessage = animMessage8;
+            animProperties4.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties4.MouseEnterDuration = 0F;
+            animProperties4.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties4.MouseEnterFramerate = 0F;
+            animProperties4.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties4.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties4.MouseLeaveDuration = 0F;
+            animProperties4.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties4.MouseLeaveFramerate = 0F;
+            animProperties4.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.resizeButton.AnimProperties = animProperties4;
+            this.resizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.resizeButton.CaptureChildren = false;
+            this.resizeButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.resizeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.resizeButton.FlatAppearance.BorderSize = 0;
+            this.resizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.resizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.resizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.resizeButton.ForeColor = System.Drawing.Color.White;
+            this.resizeButton.IgnoreMouse = false;
+            this.resizeButton.IgnoreMouseClicks = false;
+            this.resizeButton.Location = new System.Drawing.Point(1536, 0);
+            this.resizeButton.Name = "resizeButton";
+            this.resizeButton.Size = new System.Drawing.Size(20, 30);
+            this.resizeButton.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.resizeButton.TabIndex = 53;
+            this.resizeButton.Text = "⇆";
+            this.resizeButton.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.resizeButton.UseVisualStyleBackColor = false;
+            this.resizeButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.resizeButton_MouseDown);
+            this.resizeButton.MouseLeave += new System.EventHandler(this.resizeButton_MouseLeave);
+            this.resizeButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.resizeButton_MouseMove);
+            this.resizeButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.resizeButton_MouseUp);
+            // 
             // titleBar_ItemCount
             // 
-            animMessage7.Control = this.titleBar_ItemCount;
-            animMessage7.PlayAnimation = true;
-            animProperties4.BackColorMessage = animMessage7;
-            animMessage8.Control = this.titleBar_ItemCount;
-            animMessage8.PlayAnimation = true;
-            animProperties4.ForeColorMessage = animMessage8;
-            animProperties4.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties4.MouseEnterDuration = 200F;
-            animProperties4.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
-            animProperties4.MouseEnterFramerate = 144F;
-            animProperties4.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties4.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            animProperties4.MouseLeaveDuration = 200F;
-            animProperties4.MouseLeaveForeColor = System.Drawing.Color.White;
-            animProperties4.MouseLeaveFramerate = 144F;
-            animProperties4.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.titleBar_ItemCount.AnimProperties = animProperties4;
+            animMessage9.Control = this.titleBar_ItemCount;
+            animMessage9.PlayAnimation = true;
+            animProperties5.BackColorMessage = animMessage9;
+            animMessage10.Control = this.titleBar_ItemCount;
+            animMessage10.PlayAnimation = true;
+            animProperties5.ForeColorMessage = animMessage10;
+            animProperties5.MouseEnterBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties5.MouseEnterDuration = 200F;
+            animProperties5.MouseEnterForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(163)))), ((int)(((byte)(244)))));
+            animProperties5.MouseEnterFramerate = 144F;
+            animProperties5.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties5.MouseLeaveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            animProperties5.MouseLeaveDuration = 200F;
+            animProperties5.MouseLeaveForeColor = System.Drawing.Color.White;
+            animProperties5.MouseLeaveFramerate = 144F;
+            animProperties5.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.titleBar_ItemCount.AnimProperties = animProperties5;
             this.titleBar_ItemCount.AutoSize = true;
             this.titleBar_ItemCount.CaptureChildren = false;
             this.titleBar_ItemCount.Dock = System.Windows.Forms.DockStyle.Right;
@@ -243,12 +292,12 @@ namespace HeroesONE_R_GUI
             this.titleBar_ItemCount.ForeColor = System.Drawing.Color.White;
             this.titleBar_ItemCount.IgnoreMouse = false;
             this.titleBar_ItemCount.IgnoreMouseClicks = false;
-            this.titleBar_ItemCount.Location = new System.Drawing.Point(226, 0);
+            this.titleBar_ItemCount.Location = new System.Drawing.Point(1400, 0);
             this.titleBar_ItemCount.Name = "titleBar_ItemCount";
             this.titleBar_ItemCount.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.titleBar_ItemCount.Size = new System.Drawing.Size(136, 30);
             this.titleBar_ItemCount.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.titleBar_ItemCount.TabIndex = 6;
+            this.titleBar_ItemCount.TabIndex = 54;
             this.titleBar_ItemCount.Text = "Files: 0";
             this.titleBar_ItemCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.titleBar_ItemCount.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -261,23 +310,23 @@ namespace HeroesONE_R_GUI
             this.box_FileList.AllowUserToDeleteRows = false;
             this.box_FileList.AllowUserToResizeColumns = false;
             this.box_FileList.AllowUserToResizeRows = false;
-            animMessage9.Control = this.box_FileList;
-            animMessage9.PlayAnimation = true;
-            animProperties5.BackColorMessage = animMessage9;
-            animMessage10.Control = this.box_FileList;
-            animMessage10.PlayAnimation = true;
-            animProperties5.ForeColorMessage = animMessage10;
-            animProperties5.MouseEnterBackColor = System.Drawing.Color.Empty;
-            animProperties5.MouseEnterDuration = 0F;
-            animProperties5.MouseEnterForeColor = System.Drawing.Color.Empty;
-            animProperties5.MouseEnterFramerate = 0F;
-            animProperties5.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties5.MouseLeaveBackColor = System.Drawing.Color.Empty;
-            animProperties5.MouseLeaveDuration = 0F;
-            animProperties5.MouseLeaveForeColor = System.Drawing.Color.Empty;
-            animProperties5.MouseLeaveFramerate = 0F;
-            animProperties5.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.box_FileList.AnimProperties = animProperties5;
+            animMessage11.Control = this.box_FileList;
+            animMessage11.PlayAnimation = true;
+            animProperties6.BackColorMessage = animMessage11;
+            animMessage12.Control = this.box_FileList;
+            animMessage12.PlayAnimation = true;
+            animProperties6.ForeColorMessage = animMessage12;
+            animProperties6.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties6.MouseEnterDuration = 0F;
+            animProperties6.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties6.MouseEnterFramerate = 0F;
+            animProperties6.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties6.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties6.MouseLeaveDuration = 0F;
+            animProperties6.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties6.MouseLeaveFramerate = 0F;
+            animProperties6.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.box_FileList.AnimProperties = animProperties6;
             this.box_FileList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.box_FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.box_FileList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -314,7 +363,7 @@ namespace HeroesONE_R_GUI
             this.box_FileList.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.box_FileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.box_FileList.ShowCellToolTips = false;
-            this.box_FileList.Size = new System.Drawing.Size(362, 426);
+            this.box_FileList.Size = new System.Drawing.Size(1556, 788);
             this.box_FileList.StandardTab = true;
             this.box_FileList.TabIndex = 15;
             this.box_FileList.CustomDragDropEvent += new System.EventHandler<System.Windows.Forms.DragEventArgs>(this.FileList_DragDrop);
@@ -355,12 +404,13 @@ namespace HeroesONE_R_GUI
             this.titleBar_Panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar_Panel.Location = new System.Drawing.Point(0, 0);
             this.titleBar_Panel.Name = "titleBar_Panel";
-            this.titleBar_Panel.Size = new System.Drawing.Size(362, 42);
+            this.titleBar_Panel.Size = new System.Drawing.Size(1556, 42);
             this.titleBar_Panel.TabIndex = 0;
             // 
             // categoryBar_MenuStrip
             // 
             this.categoryBar_MenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(41)))), ((int)(((byte)(56)))));
+            this.categoryBar_MenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.categoryBar_MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.categoryBar_FileMenuItem,
             this.categoryBar_ExtractAll,
@@ -369,7 +419,7 @@ namespace HeroesONE_R_GUI
             this.categoryBar_OptionsMenuItem});
             this.categoryBar_MenuStrip.Location = new System.Drawing.Point(0, 42);
             this.categoryBar_MenuStrip.Name = "categoryBar_MenuStrip";
-            this.categoryBar_MenuStrip.Size = new System.Drawing.Size(362, 24);
+            this.categoryBar_MenuStrip.Size = new System.Drawing.Size(1556, 24);
             this.categoryBar_MenuStrip.TabIndex = 1;
             // 
             // categoryBar_FileMenuItem
@@ -388,14 +438,14 @@ namespace HeroesONE_R_GUI
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.newToolStripMenuItem.Text = "New (Ctrl+N)";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.openToolStripMenuItem.Text = "Open (Ctrl+O)";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -404,21 +454,21 @@ namespace HeroesONE_R_GUI
             this.saveToolStripMenuItem.Checked = true;
             this.saveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveToolStripMenuItem.Text = "Save (Heroes)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveShadow050ToolStripMenuItem
             // 
             this.saveShadow050ToolStripMenuItem.Name = "saveShadow050ToolStripMenuItem";
-            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveShadow050ToolStripMenuItem.Text = "Save (Shadow 0.50)";
             this.saveShadow050ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow050ToolStripMenuItem_Click);
             // 
             // saveShadow060ToolStripMenuItem
             // 
             this.saveShadow060ToolStripMenuItem.Name = "saveShadow060ToolStripMenuItem";
-            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.saveShadow060ToolStripMenuItem.Text = "Save (Shadow 0.60)";
             this.saveShadow060ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow060ToolStripMenuItem_Click);
             // 
@@ -451,9 +501,16 @@ namespace HeroesONE_R_GUI
             // batchAction_replaceSelectedForManyToolStripMenuItem
             // 
             this.batchAction_replaceSelectedForManyToolStripMenuItem.Name = "batchAction_replaceSelectedForManyToolStripMenuItem";
-            this.batchAction_replaceSelectedForManyToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.batchAction_replaceSelectedForManyToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
             this.batchAction_replaceSelectedForManyToolStripMenuItem.Text = "Replace Selected for many";
             this.batchAction_replaceSelectedForManyToolStripMenuItem.Click += new System.EventHandler(this.replaceSelectToolStripMenuItem_Click);
+            // 
+            // sortByExtensionsShadowToolStripMenuItem
+            // 
+            this.sortByExtensionsShadowToolStripMenuItem.Name = "sortByExtensionsShadowToolStripMenuItem";
+            this.sortByExtensionsShadowToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.sortByExtensionsShadowToolStripMenuItem.Text = "Sort by extensions (EXPERIMENTAL)";
+            this.sortByExtensionsShadowToolStripMenuItem.Click += new System.EventHandler(this.SortByExtensionsShadowToolStripMenuItem_Click);
             // 
             // categoryBar_OptionsMenuItem
             // 
@@ -526,6 +583,7 @@ namespace HeroesONE_R_GUI
             // 
             // box_MenuStrip
             // 
+            this.box_MenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.box_MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeRWVersionToolStripMenuItem,
             this.extractToolStripMenuItem,
@@ -574,26 +632,20 @@ namespace HeroesONE_R_GUI
             // 
             this.titleBar_StatusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.titleBar_StatusBar.Controls.Add(this.titleBar_ItemCount);
+            this.titleBar_StatusBar.Controls.Add(this.resizeButton);
             this.titleBar_StatusBar.Controls.Add(this.titleBar_RWVersion);
             this.titleBar_StatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.titleBar_StatusBar.Location = new System.Drawing.Point(0, 492);
+            this.titleBar_StatusBar.Location = new System.Drawing.Point(0, 854);
             this.titleBar_StatusBar.Name = "titleBar_StatusBar";
-            this.titleBar_StatusBar.Size = new System.Drawing.Size(362, 30);
+            this.titleBar_StatusBar.Size = new System.Drawing.Size(1556, 30);
             this.titleBar_StatusBar.TabIndex = 16;
-            // 
-            // sortByExtensionsShadowToolStripMenuItem
-            // 
-            this.sortByExtensionsShadowToolStripMenuItem.Name = "sortByExtensionsShadowToolStripMenuItem";
-            this.sortByExtensionsShadowToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.sortByExtensionsShadowToolStripMenuItem.Text = "Sort by extensions (EXPERIMENTAL)";
-            this.sortByExtensionsShadowToolStripMenuItem.Click += new System.EventHandler(this.SortByExtensionsShadowToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(362, 522);
+            this.ClientSize = new System.Drawing.Size(1556, 884);
             this.Controls.Add(this.box_FileList);
             this.Controls.Add(this.categoryBar_MenuStrip);
             this.Controls.Add(this.titleBar_Panel);
@@ -643,7 +695,6 @@ namespace HeroesONE_R_GUI
         private System.Windows.Forms.ToolStripMenuItem changeRWVersionToolStripMenuItem;
         private Reloaded_GUI.Styles.Controls.Animated.AnimatedButton categoryBar_Close;
         private System.Windows.Forms.Panel titleBar_StatusBar;
-        private Reloaded_GUI.Styles.Controls.Animated.AnimatedButton titleBar_ItemCount;
         private Reloaded_GUI.Styles.Controls.Animated.AnimatedButton titleBar_RWVersion;
         private System.Windows.Forms.ToolStripMenuItem setArchiveRWVersionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setAllFileRWVersionToolStripMenuItem;
@@ -660,6 +711,8 @@ namespace HeroesONE_R_GUI
         private ToolStripMenuItem categoryBar_Actions;
         private ToolStripMenuItem batchAction_replaceSelectedForManyToolStripMenuItem;
         private ToolStripMenuItem sortByExtensionsShadowToolStripMenuItem;
+        private Reloaded_GUI.Styles.Controls.Animated.AnimatedButton resizeButton;
+        private Reloaded_GUI.Styles.Controls.Animated.AnimatedButton titleBar_ItemCount;
     }
 }
 

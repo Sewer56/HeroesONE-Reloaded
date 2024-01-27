@@ -78,7 +78,7 @@ namespace HeroesONE_R_GUI
         private Rectangle dragBoxFromMouseDown;
         private int rowIndexFromMouseDown;
         private int rowIndexOfItemUnderMouseToDrop;
-        private bool filePickerWasActive = false;
+        private bool restrictDragAndDrop = false;
 
         /// <summary>
         /// Sets up the current window and the Reloaded theme.
@@ -218,7 +218,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Pick ONE file.
             VistaSaveFileDialog fileDialog = new()
             {
@@ -238,7 +238,7 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void box_FileList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
                 return;
             if (e.Button == MouseButtons.Right)
             {
@@ -339,7 +339,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Pick file.
             VistaOpenFileDialog fileDialog = new()
             {
@@ -356,7 +356,7 @@ namespace HeroesONE_R_GUI
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -444,7 +444,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void categoryBar_AddFiles_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Pick file(s)
             VistaOpenFileDialog fileDialog = new()
             {
@@ -465,7 +465,7 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 UpdateGUI(ref Archive);
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -475,7 +475,7 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void extractToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Select path to extract to.
             VistaSaveFileDialog fileDialog = new()
             {
@@ -491,7 +491,7 @@ namespace HeroesONE_R_GUI
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -554,17 +554,17 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Get file name.
             RenameDialog searchBufferDialog = new RenameDialog(ArchiveFile.Name);
             ArchiveFile.Name = searchBufferDialog.ShowDialog();
             UpdateGUI(ref Archive);
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         private void saveShadow050ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Pick ONE file.
             VistaSaveFileDialog fileDialog = new()
             {
@@ -583,12 +583,12 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         private void saveShadow060ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Pick ONE file.
             VistaSaveFileDialog fileDialog = new()
             {
@@ -607,7 +607,7 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -615,7 +615,7 @@ namespace HeroesONE_R_GUI
         /// </summary>
         private void FileList_DragEnter(object sender, DragEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
                 return;
             // Contains the paths to the individual files.
             if (e.AllowedEffect == DragDropEffects.Move)
@@ -631,7 +631,7 @@ namespace HeroesONE_R_GUI
         /// </summary>
         private void FileList_DragDrop(object sender, DragEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
                 return;
             // The mouse locations are relative to the screen, so they must be 
             // converted to client coordinates.
@@ -692,7 +692,7 @@ namespace HeroesONE_R_GUI
 
         private void categoryBar_ExtractAll_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             // Select path to extract to.
             VistaFolderBrowserDialog fileDialog = new()
             {
@@ -713,7 +713,7 @@ namespace HeroesONE_R_GUI
                         _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.SelectedPath);
                 });
             }
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
         // Other Keyboard shortcuts
@@ -853,7 +853,7 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_MouseDown(object sender, MouseEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
                 return;
             // Get the index of the item the mouse is below.
             rowIndexFromMouseDown = box_FileList.HitTest(e.X, e.Y).RowIndex;
@@ -875,7 +875,7 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_MouseMove(object sender, MouseEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
                 return;
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
             {
@@ -893,8 +893,11 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_DragOver(object sender, DragEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
+            {
+                e.Effect = DragDropEffects.None;
                 return;
+            }
             if (e.AllowedEffect == DragDropEffects.Move)
                 e.Effect = DragDropEffects.Move;
             else if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -905,7 +908,7 @@ namespace HeroesONE_R_GUI
 
         private void replaceSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            filePickerWasActive = true;
+            restrictDragAndDrop = true;
             MessageBox.Show("This batch action will replace the selected file name in the current file across all .ones in the folder you pick (recursive).\n\n1. Choose the folder to modify .ones\n2. Choose the replacement file content");
             try
             {
@@ -967,13 +970,13 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(foundOnes[i], outputFile.ToArray());
             }
             MessageBox.Show("DONE");
-            ClearFilePickerWasActive();
+            ClearRestrictDragAndDrop();
         }
 
-        private async Task ClearFilePickerWasActive(int milliseconds = 500)
+        private async Task ClearRestrictDragAndDrop(int milliseconds = 500)
         {
             await Task.Delay(milliseconds);
-            filePickerWasActive = false;
+            restrictDragAndDrop = false;
         }
 
         private string[] shadowOneExtensionOrder =
@@ -1059,11 +1062,20 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (filePickerWasActive)
+            if (restrictDragAndDrop)
                 return;
             var temp = Path.Combine(Path.GetTempPath(), Archive.Files[e.RowIndex].Name);
             File.WriteAllBytes(temp, Archive.Files[e.RowIndex].DecompressThis());
             System.Diagnostics.Process.Start(temp);
+        }
+
+        private void box_FileList_DragLeave(object sender, EventArgs e)
+        {
+            string outfile = Path.Combine(Path.GetTempPath(), Archive.Files[box_FileList.SelectedRows[0].Index].Name);
+            File.WriteAllBytes(outfile, Archive.Files[box_FileList.SelectedRows[0].Index].DecompressThis());
+            DoDragDrop(new DataObject(DataFormats.FileDrop, new string[] { outfile }), DragDropEffects.Copy);
+            restrictDragAndDrop = true;
+            ClearRestrictDragAndDrop(200);
         }
     }
 }

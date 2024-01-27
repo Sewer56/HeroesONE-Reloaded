@@ -58,6 +58,9 @@ namespace HeroesONE_R_GUI
             this.titleBar_RWVersion = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.resizeButton = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
             this.titleBar_ItemCount = new Reloaded_GUI.Styles.Controls.Animated.AnimatedButton();
+            this.box_FileList = new HeroesONE_R_GUI.Controls.CustomDataGridView();
+            this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rwVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleBar_Panel = new System.Windows.Forms.Panel();
             this.categoryBar_MenuStrip = new System.Windows.Forms.MenuStrip();
             this.categoryBar_FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,14 +89,11 @@ namespace HeroesONE_R_GUI
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleBar_StatusBar = new System.Windows.Forms.Panel();
-            this.box_FileList = new HeroesONE_R_GUI.Controls.CustomDataGridView();
-            this.fileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rwVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).BeginInit();
             this.titleBar_Panel.SuspendLayout();
             this.categoryBar_MenuStrip.SuspendLayout();
             this.box_MenuStrip.SuspendLayout();
             this.titleBar_StatusBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).BeginInit();
             this.SuspendLayout();
             // 
             // titleBar_Title
@@ -302,6 +302,101 @@ namespace HeroesONE_R_GUI
             this.titleBar_ItemCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.titleBar_ItemCount.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.titleBar_ItemCount.UseVisualStyleBackColor = true;
+            // 
+            // box_FileList
+            // 
+            this.box_FileList.AllowDrop = true;
+            this.box_FileList.AllowUserToAddRows = false;
+            this.box_FileList.AllowUserToDeleteRows = false;
+            this.box_FileList.AllowUserToResizeColumns = false;
+            this.box_FileList.AllowUserToResizeRows = false;
+            animMessage11.Control = this.box_FileList;
+            animMessage11.PlayAnimation = true;
+            animProperties6.BackColorMessage = animMessage11;
+            animMessage12.Control = this.box_FileList;
+            animMessage12.PlayAnimation = true;
+            animProperties6.ForeColorMessage = animMessage12;
+            animProperties6.MouseEnterBackColor = System.Drawing.Color.Empty;
+            animProperties6.MouseEnterDuration = 0F;
+            animProperties6.MouseEnterForeColor = System.Drawing.Color.Empty;
+            animProperties6.MouseEnterFramerate = 0F;
+            animProperties6.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
+            animProperties6.MouseLeaveBackColor = System.Drawing.Color.Empty;
+            animProperties6.MouseLeaveDuration = 0F;
+            animProperties6.MouseLeaveForeColor = System.Drawing.Color.Empty;
+            animProperties6.MouseLeaveFramerate = 0F;
+            animProperties6.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
+            this.box_FileList.AnimProperties = animProperties6;
+            this.box_FileList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.box_FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.box_FileList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.box_FileList.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.box_FileList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.box_FileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.box_FileList.ColumnHeadersVisible = false;
+            this.box_FileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.fileName,
+            this.rwVersion});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.box_FileList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.box_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.box_FileList.DragRowIndex = 0;
+            this.box_FileList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.box_FileList.EnableHeadersVisualStyles = false;
+            this.box_FileList.GridColor = System.Drawing.Color.White;
+            this.box_FileList.Location = new System.Drawing.Point(0, 66);
+            this.box_FileList.MultiSelect = false;
+            this.box_FileList.Name = "box_FileList";
+            this.box_FileList.ReadOnly = true;
+            this.box_FileList.ReorderingEnabled = false;
+            this.box_FileList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.box_FileList.RowHeadersVisible = false;
+            this.box_FileList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.box_FileList.RowTemplate.Height = 20;
+            this.box_FileList.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.box_FileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.box_FileList.ShowCellToolTips = false;
+            this.box_FileList.Size = new System.Drawing.Size(1556, 788);
+            this.box_FileList.StandardTab = true;
+            this.box_FileList.TabIndex = 15;
+            this.box_FileList.CustomDragDropEvent += new System.EventHandler<System.Windows.Forms.DragEventArgs>(this.FileList_DragDrop);
+            this.box_FileList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.box_FileList_CellContentDoubleClick);
+            this.box_FileList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.box_FileList_CellMouseClick);
+            this.box_FileList.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileList_DragEnter);
+            this.box_FileList.DragOver += new System.Windows.Forms.DragEventHandler(this.box_FileList_DragOver);
+            this.box_FileList.DragLeave += new System.EventHandler(this.box_FileList_DragLeave);
+            this.box_FileList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.box_FileList_KeyUp);
+            this.box_FileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseDown);
+            this.box_FileList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseMove);
+            // 
+            // fileName
+            // 
+            this.fileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.fileName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.fileName.FillWeight = 70F;
+            this.fileName.HeaderText = "File Name";
+            this.fileName.Name = "fileName";
+            this.fileName.ReadOnly = true;
+            // 
+            // rwVersion
+            // 
+            this.rwVersion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.rwVersion.DefaultCellStyle = dataGridViewCellStyle2;
+            this.rwVersion.FillWeight = 30F;
+            this.rwVersion.HeaderText = "RW Version";
+            this.rwVersion.Name = "rwVersion";
+            this.rwVersion.ReadOnly = true;
             // 
             // titleBar_Panel
             // 
@@ -547,100 +642,6 @@ namespace HeroesONE_R_GUI
             this.titleBar_StatusBar.Size = new System.Drawing.Size(1556, 30);
             this.titleBar_StatusBar.TabIndex = 16;
             // 
-            // box_FileList
-            // 
-            this.box_FileList.AllowDrop = true;
-            this.box_FileList.AllowUserToAddRows = false;
-            this.box_FileList.AllowUserToDeleteRows = false;
-            this.box_FileList.AllowUserToResizeColumns = false;
-            this.box_FileList.AllowUserToResizeRows = false;
-            animMessage11.Control = this.box_FileList;
-            animMessage11.PlayAnimation = true;
-            animProperties6.BackColorMessage = animMessage11;
-            animMessage12.Control = this.box_FileList;
-            animMessage12.PlayAnimation = true;
-            animProperties6.ForeColorMessage = animMessage12;
-            animProperties6.MouseEnterBackColor = System.Drawing.Color.Empty;
-            animProperties6.MouseEnterDuration = 0F;
-            animProperties6.MouseEnterForeColor = System.Drawing.Color.Empty;
-            animProperties6.MouseEnterFramerate = 0F;
-            animProperties6.MouseEnterOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseEnterOverride.None;
-            animProperties6.MouseLeaveBackColor = System.Drawing.Color.Empty;
-            animProperties6.MouseLeaveDuration = 0F;
-            animProperties6.MouseLeaveForeColor = System.Drawing.Color.Empty;
-            animProperties6.MouseLeaveFramerate = 0F;
-            animProperties6.MouseLeaveOverride = Reloaded_GUI.Styles.Animation.AnimOverrides.MouseLeaveOverride.None;
-            this.box_FileList.AnimProperties = animProperties6;
-            this.box_FileList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.box_FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.box_FileList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.box_FileList.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.box_FileList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.box_FileList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.box_FileList.ColumnHeadersVisible = false;
-            this.box_FileList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.fileName,
-            this.rwVersion});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.box_FileList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.box_FileList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.box_FileList.DragRowIndex = 0;
-            this.box_FileList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.box_FileList.EnableHeadersVisualStyles = false;
-            this.box_FileList.GridColor = System.Drawing.Color.White;
-            this.box_FileList.Location = new System.Drawing.Point(0, 66);
-            this.box_FileList.MultiSelect = false;
-            this.box_FileList.Name = "box_FileList";
-            this.box_FileList.ReadOnly = true;
-            this.box_FileList.ReorderingEnabled = false;
-            this.box_FileList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.box_FileList.RowHeadersVisible = false;
-            this.box_FileList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.box_FileList.RowTemplate.Height = 20;
-            this.box_FileList.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.box_FileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.box_FileList.ShowCellToolTips = false;
-            this.box_FileList.Size = new System.Drawing.Size(1556, 788);
-            this.box_FileList.StandardTab = true;
-            this.box_FileList.TabIndex = 15;
-            this.box_FileList.CustomDragDropEvent += new System.EventHandler<System.Windows.Forms.DragEventArgs>(this.FileList_DragDrop);
-            this.box_FileList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.box_FileList_CellContentDoubleClick);
-            this.box_FileList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.box_FileList_CellMouseClick);
-            this.box_FileList.DragEnter += new System.Windows.Forms.DragEventHandler(this.FileList_DragEnter);
-            this.box_FileList.DragOver += new System.Windows.Forms.DragEventHandler(this.box_FileList_DragOver);
-            this.box_FileList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.box_FileList_KeyUp);
-            this.box_FileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseDown);
-            this.box_FileList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseMove);
-            // 
-            // fileName
-            // 
-            this.fileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.fileName.DefaultCellStyle = dataGridViewCellStyle1;
-            this.fileName.FillWeight = 70F;
-            this.fileName.HeaderText = "File Name";
-            this.fileName.Name = "fileName";
-            this.fileName.ReadOnly = true;
-            // 
-            // rwVersion
-            // 
-            this.rwVersion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.rwVersion.DefaultCellStyle = dataGridViewCellStyle2;
-            this.rwVersion.FillWeight = 30F;
-            this.rwVersion.HeaderText = "RW Version";
-            this.rwVersion.Name = "rwVersion";
-            this.rwVersion.ReadOnly = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,13 +660,13 @@ namespace HeroesONE_R_GUI
             this.Text = "HeroesONE Reloaded";
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).EndInit();
             this.titleBar_Panel.ResumeLayout(false);
             this.categoryBar_MenuStrip.ResumeLayout(false);
             this.categoryBar_MenuStrip.PerformLayout();
             this.box_MenuStrip.ResumeLayout(false);
             this.titleBar_StatusBar.ResumeLayout(false);
             this.titleBar_StatusBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.box_FileList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

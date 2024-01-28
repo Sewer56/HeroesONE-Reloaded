@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HeroesONE_R.Structures;
 using HeroesONE_R.Structures.Common;
+using HeroesONE_R.Structures.SonicHeroes.ONE_Substructures;
 using HeroesONE_R.Structures.Substructures;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
@@ -88,7 +89,7 @@ namespace HeroesONE_R_GUI
 
             ReloadedDefaultTheme = new Theme();
             Reloaded_GUI.Bindings.WindowsForms.Add(this);
-            //Load Reloaded-GUI
+            // Load Reloaded-GUI
             ReloadedDefaultTheme.LoadCurrentTheme();
 
             // Custom render settings.
@@ -945,6 +946,28 @@ namespace HeroesONE_R_GUI
             {
                 // Contains the paths to the individual files.
                 List<string> addedFilePaths = ((string[])e.Data.GetData(DataFormats.FileDrop, false)).ToList();
+
+                if (addedFilePaths.Count == 1 && Path.GetFileName(addedFilePaths[0]).ToLower().EndsWith(".one"))
+                {
+                    try
+                    {
+                        // Attempt to load the file from disk, parse the .ONE archive and update the GUI.
+                        byte[] file = File.ReadAllBytes(addedFilePaths[0]);
+                        Archive = Archive.FromONEFile(ref file);
+                        // If this throws, or there is no file, Archive will not have been set, so we can return with an error
+                        UpdateGUI(ref Archive);
+                        this.titleBar_Title.Text = Path.GetFileName(addedFilePaths[0]);
+                        SetCheckboxHint(ref file);
+
+                        _lastOpenedDirectory = Path.GetDirectoryName(addedFilePaths[0]);
+                        _lastONEDirectory = Path.GetDirectoryName(addedFilePaths[0]);
+                        return;
+                    } catch
+                    {
+                        MessageBox.Show("Error loading .one\n If you wanted to add this .one to the current .one, use the 'Add Files' button", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
 
                 for (int i = 0; i < Archive.Files.Count; i++)
                 {

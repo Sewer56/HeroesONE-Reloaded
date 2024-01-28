@@ -1,6 +1,6 @@
 # HeroesONE Reloaded
 
-![Example Image](https://i.imgur.com/5CqbwQe.png)
+![Example Image](https://raw.githubusercontent.com/Sewer56/HeroesONE-Reloaded/master/Images/program_example.png)
 
 HeroesONE Reloaded is a fully featured, from the ground up rewrite of the original [HeroesONE](https://github.com/sonicretro/HeroesONE) archiving utility used for the extraction and creation of .ONE files in both Sonic Heroes (2003/2004) and Shadow The Hedgehog (2005). 
 
@@ -55,17 +55,38 @@ In other words, to ensure snappiness - HeroesONE Reloaded will automatically opt
 That said, this option may be disabled and a custom search buffer size specified.
 
 Extra Resource: [dlang-prs benchmarks](https://github.com/sewer56lol/dlang-prs)
-Manual search buffer size adjustment: ![Example](https://i.imgur.com/y4D9LyY.png)
+Manual search buffer size adjustment: ![Example](https://raw.githubusercontent.com/Sewer56/HeroesONE-Reloaded/master/Images/search_buffer.png)
 
 ### Windows Explorer File Associations
 
-![Image](https://i.imgur.com/rl3IVMp.png)
+![Image](https://raw.githubusercontent.com/Sewer56/HeroesONE-Reloaded/master/Images/windows_file_association.png)
 
 Not very difficult to explain this one. HeroesONE Reloaded will automatically set for you a file type association such that you may simply double click any .ONE file from your explorer window to make it open in HeroesONE Reloaded.
 
+### Drag & Drop / Double Click
+
+You can drag & drop files to the editor.
+
+
+Dragging from the editor to the same editor will allow you to move entries
+
+
+Dragging to the editor from your file system...
+* If a single .one is dropped, it will be opened, discarding the currently loaded data.
+* If a file dropped matches the name of an item already in the loaded data, it will replace/update the loaded data.
+* If a file dropped does not match the name of an item already in the loaded data, it is inserted at the position after the currently selected item. If no item is selected it is appended to the end of the items.
+
+
+Dragging from the editor to your file system...
+* Will allow you to copy single files directly (equivalent to extract feature)
+* Will allow you to drag directly into other programs (DFF model viewer, Texture tools etc)
+
+
+Double clicking an item in the editor will temporarily copy the file to your %temp% directory and attempt to execute the association handler for the extension (ex, Magic.TXD for TXD)
+
 ### RenderWare Version Parsing and Manipulation
 
-![RW Version Tag Changing](https://i.imgur.com/UvXxa5Q.png)
+![RW Version Tag Changing](https://raw.githubusercontent.com/Sewer56/HeroesONE-Reloaded/master/Images/rw_version_changing.png)
 
 HeroesONE Reloaded is capable of modifying the RenderWare version that is written to the .ONE archive metadata both on an archive and per-file level as originally set in the original .ONE files and ignored by the original HeroesONE.
 
@@ -74,3 +95,7 @@ This will directly allow you to save your ONE Archives wih any arbitrary RenderW
 ### Shadow The Hedgehog Dummy Entry Checking
 
 There were the very, very odd and very, very rare files (such as vehicleresource.one) that the original HeroesONE could not open simply because the late/last file entries of the file metadata section have been dummied out in the .ONE archives. Well, this has been fixed.
+
+### HeroesONE_R_GUI -> Shadow the Hedgehog Order Sort (Action)
+
+Under the Action menubar, you can automatically sort files based on what Shadow the Hedgehog's .ONE parser expects. This is mainly intended for GADGET (`*_GDT.one`) files. This allows you to easily port objects between stages.

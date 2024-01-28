@@ -93,7 +93,7 @@ namespace HeroesONE_R_GUI
             ReloadedDefaultTheme.LoadCurrentTheme();
 
             // Custom render settings.
-            MakeRoundedWindow.RoundWindow(this, 30, 30);
+            MakeRoundedWindow.RoundWindow(this, 0, 0);
             categoryBar_MenuStrip.Renderer = new MyRenderer();
 
             // Initialize default archive.

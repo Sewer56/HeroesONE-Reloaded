@@ -15,8 +15,6 @@ using Ookii.Dialogs.WinForms;
 using Reloaded.Native.WinAPI;
 using Reloaded_GUI.Styles.Themes;
 using Reloaded_GUI.Utilities.Windows;
-using static System.Windows.Forms.Design.AxImporter;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HeroesONE_R_GUI
 {
@@ -238,7 +236,6 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -316,8 +313,6 @@ namespace HeroesONE_R_GUI
         /// <param name="e"></param>
         private void box_FileList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (restrictDragAndDrop)
-                return;
             if (e.Button == MouseButtons.Right)
             {
                 // Gets our individual file to manipulate.
@@ -356,7 +351,6 @@ namespace HeroesONE_R_GUI
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -465,7 +459,6 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 UpdateGUI(ref Archive);
             }
-            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -491,7 +484,6 @@ namespace HeroesONE_R_GUI
                 if (!Properties.Settings.Default.OpenAtCurrentFile)
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearRestrictDragAndDrop();
         }
 
         /// <summary>
@@ -559,7 +551,6 @@ namespace HeroesONE_R_GUI
             RenameDialog searchBufferDialog = new RenameDialog(ArchiveFile.Name);
             ArchiveFile.Name = searchBufferDialog.ShowDialog();
             UpdateGUI(ref Archive);
-            ClearRestrictDragAndDrop();
         }
 
         private void saveShadow050ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -583,7 +574,6 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearRestrictDragAndDrop();
         }
 
         private void saveShadow060ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -607,87 +597,6 @@ namespace HeroesONE_R_GUI
                     _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.FileName);
                 _lastONEDirectory = Path.GetDirectoryName(fileDialog.FileName);
             }
-            ClearRestrictDragAndDrop();
-        }
-
-        /// <summary>
-        /// Cause the data to be copied from the source to the target.
-        /// </summary>
-        private void FileList_DragEnter(object sender, DragEventArgs e)
-        {
-            if (restrictDragAndDrop)
-                return;
-            // Contains the paths to the individual files.
-            if (e.AllowedEffect == DragDropEffects.Move)
-                e.Effect = DragDropEffects.Move;
-            else if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-            else 
-                e.Effect = DragDropEffects.None;
-        }
-
-        /// <summary>
-        /// Get the file paths of the files that were dropped onto the archiver windows.
-        /// </summary>
-        private void FileList_DragDrop(object sender, DragEventArgs e)
-        {
-            if (restrictDragAndDrop)
-                return;
-            // The mouse locations are relative to the screen, so they must be 
-            // converted to client coordinates.
-            Point clientPoint = box_FileList.PointToClient(new Point(e.X, e.Y));
-
-            // Get the row index of the item the mouse is below. 
-            rowIndexOfItemUnderMouseToDrop =
-                box_FileList.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
-
-            // If the drag operation was a move then remove and insert the row.
-            if (e.Effect == DragDropEffects.Move)
-            {
-                if (rowIndexOfItemUnderMouseToDrop < 0)
-                {
-                    return;
-                }
-                ArchiveFile copy = Archive.Files[rowIndexFromMouseDown];
-                Archive.Files.RemoveAt(rowIndexFromMouseDown);
-                Archive.Files.Insert(rowIndexOfItemUnderMouseToDrop, copy);
-
-            } else if (e.Effect == DragDropEffects.Copy)
-            {
-                // Contains the paths to the individual files.
-                List<string> addedFilePaths = ((string[])e.Data.GetData(DataFormats.FileDrop, false)).ToList();
-
-                for (int i = 0; i < Archive.Files.Count; i++)
-                {
-                    for (int j = addedFilePaths.Count - 1; j >= 0; j--)
-                    {
-                        if (Archive.Files[i].Name.Equals(Path.GetFileName(addedFilePaths[j]), StringComparison.OrdinalIgnoreCase))
-                        {
-                            var data = File.ReadAllBytes(addedFilePaths[j]);
-                            Archive.Files[i].CompressedData = Prs.Compress(ref data);
-                            addedFilePaths.RemoveAt(j);
-                            break;
-                        }
-                    }
-                    if (addedFilePaths.Count == 0)
-                        break;
-                }
-
-                foreach (var file in addedFilePaths)
-                {
-                    try
-                    {
-                        var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
-                        Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
-                    }
-                    catch (ArgumentOutOfRangeException)
-                    {
-                        Archive.Files.Add(new ArchiveFile(file));
-                    }
-                }
-            }
-            UpdateGUI(ref Archive);
-
         }
 
         private void categoryBar_ExtractAll_Click(object sender, EventArgs e)
@@ -713,7 +622,6 @@ namespace HeroesONE_R_GUI
                         _lastOpenedDirectory = Path.GetDirectoryName(fileDialog.SelectedPath);
                 });
             }
-            ClearRestrictDragAndDrop();
         }
 
         // Other Keyboard shortcuts
@@ -838,74 +746,6 @@ namespace HeroesONE_R_GUI
             Properties.Settings.Default.Save();
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.HideWarnings)
-                hideWarningsToolStripMenuItem.Checked = true;
-            else
-                hideWarningsToolStripMenuItem.Checked = false;
-
-            if (Properties.Settings.Default.OpenAtCurrentFile)
-                filePickerStartsAtOpenedFileToolStripMenuItem.Checked = true;
-            else
-                filePickerStartsAtOpenedFileToolStripMenuItem.Checked = false;
-        }
-
-        private void box_FileList_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (restrictDragAndDrop)
-                return;
-            // Get the index of the item the mouse is below.
-            rowIndexFromMouseDown = box_FileList.HitTest(e.X, e.Y).RowIndex;
-            if (rowIndexFromMouseDown != -1) {
-                // Remember the point where the mouse down occurred. 
-                // The DragSize indicates the size that the mouse can move 
-                // before a drag event should be started.                
-                Size dragSize = SystemInformation.DragSize;
-
-                // Create a rectangle using the DragSize, with the mouse position being
-                // at the center of the rectangle.
-                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
-                                                               e.Y - (dragSize.Height / 2)),
-                                    dragSize);
-            } else
-                // Reset the rectangle if the mouse is not over an item in the ListBox.
-                dragBoxFromMouseDown = Rectangle.Empty;
-        }
-
-        private void box_FileList_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (restrictDragAndDrop)
-                return;
-            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
-            {
-                // If the mouse moves outside the rectangle, start the drag.
-                if (dragBoxFromMouseDown != Rectangle.Empty &&
-                    !dragBoxFromMouseDown.Contains(e.X, e.Y))
-                {
-                    // Proceed with the drag and drop, passing in the list item.                    
-                    DragDropEffects dropEffect = box_FileList.DoDragDrop(
-                    box_FileList.Rows[rowIndexFromMouseDown],
-                    DragDropEffects.Move);
-                }
-            }
-        }
-
-        private void box_FileList_DragOver(object sender, DragEventArgs e)
-        {
-            if (restrictDragAndDrop)
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-            if (e.AllowedEffect == DragDropEffects.Move)
-                e.Effect = DragDropEffects.Move;
-            else if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-            else
-                e.Effect = DragDropEffects.None;
-        }
-
         private void replaceSelectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             restrictDragAndDrop = true;
@@ -970,13 +810,172 @@ namespace HeroesONE_R_GUI
                 File.WriteAllBytes(foundOnes[i], outputFile.ToArray());
             }
             MessageBox.Show("DONE");
-            ClearRestrictDragAndDrop();
         }
 
-        private async Task ClearRestrictDragAndDrop(int milliseconds = 500)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
-            await Task.Delay(milliseconds);
-            restrictDragAndDrop = false;
+            if (Properties.Settings.Default.HideWarnings)
+                hideWarningsToolStripMenuItem.Checked = true;
+            else
+                hideWarningsToolStripMenuItem.Checked = false;
+
+            if (Properties.Settings.Default.OpenAtCurrentFile)
+                filePickerStartsAtOpenedFileToolStripMenuItem.Checked = true;
+            else
+                filePickerStartsAtOpenedFileToolStripMenuItem.Checked = false;
+        }
+
+        private void box_FileList_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Get the index of the item the mouse is below.
+            rowIndexFromMouseDown = box_FileList.HitTest(e.X, e.Y).RowIndex;
+            if (rowIndexFromMouseDown != -1 && e.Button == MouseButtons.Left) {
+                // Remember the point where the mouse down occurred. 
+                // The DragSize indicates the size that the mouse can move 
+                // before a drag event should be started.                
+                Size dragSize = SystemInformation.DragSize;
+
+                // Create a rectangle using the DragSize, with the mouse position being
+                // at the center of the rectangle.
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                                                               e.Y - (dragSize.Height / 2)),
+                                    dragSize);
+            } else
+                // Reset the rectangle if the mouse is not over an item in the ListBox.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void box_FileList_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void box_FileList_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                // If the mouse moves outside the rectangle, start the drag.
+                if (dragBoxFromMouseDown != Rectangle.Empty &&
+                    !dragBoxFromMouseDown.Contains(e.X, e.Y))
+                {
+                    // Proceed with the drag and drop, passing in the list item.                    
+                    DragDropEffects dropEffect = box_FileList.DoDragDrop(
+                    box_FileList.Rows[rowIndexFromMouseDown],
+                    DragDropEffects.Move);
+                }
+            }
+        }
+
+        private void box_FileList_DragOver(object sender, DragEventArgs e)
+        {
+            if (restrictDragAndDrop)
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            if (e.AllowedEffect == DragDropEffects.Move)
+                e.Effect = DragDropEffects.Move;
+            else if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void box_FileList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var temp = Path.Combine(Path.GetTempPath(), Archive.Files[e.RowIndex].Name);
+            File.WriteAllBytes(temp, Archive.Files[e.RowIndex].DecompressThis());
+            System.Diagnostics.Process.Start(temp);
+        }
+
+        private void box_FileList_DragLeave(object sender, EventArgs e)
+        {
+            string outfile = Path.Combine(Path.GetTempPath(), Archive.Files[box_FileList.SelectedRows[0].Index].Name);
+            File.WriteAllBytes(outfile, Archive.Files[box_FileList.SelectedRows[0].Index].DecompressThis());
+            DoDragDrop(new DataObject(DataFormats.FileDrop, new string[] { outfile }), DragDropEffects.Copy);
+            restrictDragAndDrop = true;
+        }
+
+        /// <summary>
+        /// Cause the data to be copied from the source to the target.
+        /// </summary>
+        private void FileList_DragEnter(object sender, DragEventArgs e)
+        {
+            if (restrictDragAndDrop)
+            {
+                restrictDragAndDrop = false;
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            // Contains the paths to the individual files.
+            if (e.AllowedEffect == DragDropEffects.Move)
+                e.Effect = DragDropEffects.Move;
+            else if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        /// <summary>
+        /// Get the file paths of the files that were dropped onto the archiver windows.
+        /// </summary>
+        private void FileList_DragDrop(object sender, DragEventArgs e)
+        {
+            // The mouse locations are relative to the screen, so they must be 
+            // converted to client coordinates.
+            Point clientPoint = box_FileList.PointToClient(new Point(e.X, e.Y));
+
+            // Get the row index of the item the mouse is below. 
+            rowIndexOfItemUnderMouseToDrop =
+                box_FileList.HitTest(clientPoint.X, clientPoint.Y).RowIndex;
+
+            // If the drag operation was a move then remove and insert the row.
+            if (e.Effect == DragDropEffects.Move)
+            {
+                if (rowIndexOfItemUnderMouseToDrop < 0)
+                {
+                    return;
+                }
+                ArchiveFile copy = Archive.Files[rowIndexFromMouseDown];
+                Archive.Files.RemoveAt(rowIndexFromMouseDown);
+                Archive.Files.Insert(rowIndexOfItemUnderMouseToDrop, copy);
+
+            }
+            else if (e.Effect == DragDropEffects.Copy)
+            {
+                // Contains the paths to the individual files.
+                List<string> addedFilePaths = ((string[])e.Data.GetData(DataFormats.FileDrop, false)).ToList();
+
+                for (int i = 0; i < Archive.Files.Count; i++)
+                {
+                    for (int j = addedFilePaths.Count - 1; j >= 0; j--)
+                    {
+                        if (Archive.Files[i].Name.Equals(Path.GetFileName(addedFilePaths[j]), StringComparison.OrdinalIgnoreCase))
+                        {
+                            var data = File.ReadAllBytes(addedFilePaths[j]);
+                            Archive.Files[i].CompressedData = Prs.Compress(ref data);
+                            addedFilePaths.RemoveAt(j);
+                            break;
+                        }
+                    }
+                    if (addedFilePaths.Count == 0)
+                        break;
+                }
+
+                foreach (var file in addedFilePaths)
+                {
+                    try
+                    {
+                        var selectedIndex = box_FileList.SelectedRows[0].Index + 1;
+                        Archive.Files.Insert(selectedIndex, new ArchiveFile(file));
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        Archive.Files.Add(new ArchiveFile(file));
+                    }
+                }
+            }
+            UpdateGUI(ref Archive);
         }
 
         private string[] shadowOneExtensionOrder =
@@ -1058,24 +1057,6 @@ namespace HeroesONE_R_GUI
         private void resizeButton_MouseUp(object sender, MouseEventArgs e)
         {
             mov = false;
-        }
-
-        private void box_FileList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (restrictDragAndDrop)
-                return;
-            var temp = Path.Combine(Path.GetTempPath(), Archive.Files[e.RowIndex].Name);
-            File.WriteAllBytes(temp, Archive.Files[e.RowIndex].DecompressThis());
-            System.Diagnostics.Process.Start(temp);
-        }
-
-        private void box_FileList_DragLeave(object sender, EventArgs e)
-        {
-            string outfile = Path.Combine(Path.GetTempPath(), Archive.Files[box_FileList.SelectedRows[0].Index].Name);
-            File.WriteAllBytes(outfile, Archive.Files[box_FileList.SelectedRows[0].Index].DecompressThis());
-            DoDragDrop(new DataObject(DataFormats.FileDrop, new string[] { outfile }), DragDropEffects.Copy);
-            restrictDragAndDrop = true;
-            ClearRestrictDragAndDrop(200);
         }
     }
 }

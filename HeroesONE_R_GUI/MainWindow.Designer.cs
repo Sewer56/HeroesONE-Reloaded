@@ -127,8 +127,9 @@ namespace HeroesONE_R_GUI
             this.titleBar_Title.IgnoreMouse = false;
             this.titleBar_Title.IgnoreMouseClicks = false;
             this.titleBar_Title.Location = new System.Drawing.Point(0, 0);
+            this.titleBar_Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleBar_Title.Name = "titleBar_Title";
-            this.titleBar_Title.Size = new System.Drawing.Size(1556, 42);
+            this.titleBar_Title.Size = new System.Drawing.Size(1942, 52);
             this.titleBar_Title.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.titleBar_Title.TabIndex = 4;
             this.titleBar_Title.Text = "HeroesONE Reloaded";
@@ -166,9 +167,10 @@ namespace HeroesONE_R_GUI
             this.categoryBar_Close.ForeColor = System.Drawing.Color.White;
             this.categoryBar_Close.IgnoreMouse = false;
             this.categoryBar_Close.IgnoreMouseClicks = false;
-            this.categoryBar_Close.Location = new System.Drawing.Point(1526, 0);
+            this.categoryBar_Close.Location = new System.Drawing.Point(1902, 0);
+            this.categoryBar_Close.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.categoryBar_Close.Name = "categoryBar_Close";
-            this.categoryBar_Close.Size = new System.Drawing.Size(30, 42);
+            this.categoryBar_Close.Size = new System.Drawing.Size(40, 52);
             this.categoryBar_Close.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.categoryBar_Close.TabIndex = 52;
             this.categoryBar_Close.Text = "X";
@@ -207,9 +209,10 @@ namespace HeroesONE_R_GUI
             this.titleBar_RWVersion.IgnoreMouse = false;
             this.titleBar_RWVersion.IgnoreMouseClicks = false;
             this.titleBar_RWVersion.Location = new System.Drawing.Point(0, 0);
+            this.titleBar_RWVersion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleBar_RWVersion.Name = "titleBar_RWVersion";
-            this.titleBar_RWVersion.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.titleBar_RWVersion.Size = new System.Drawing.Size(231, 30);
+            this.titleBar_RWVersion.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.titleBar_RWVersion.Size = new System.Drawing.Size(308, 37);
             this.titleBar_RWVersion.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.titleBar_RWVersion.TabIndex = 5;
             this.titleBar_RWVersion.Text = "RW Version: 3.5.0.0.FFFF";
@@ -248,9 +251,10 @@ namespace HeroesONE_R_GUI
             this.resizeButton.ForeColor = System.Drawing.Color.White;
             this.resizeButton.IgnoreMouse = false;
             this.resizeButton.IgnoreMouseClicks = false;
-            this.resizeButton.Location = new System.Drawing.Point(1536, 0);
+            this.resizeButton.Location = new System.Drawing.Point(1915, 0);
+            this.resizeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.resizeButton.Name = "resizeButton";
-            this.resizeButton.Size = new System.Drawing.Size(20, 30);
+            this.resizeButton.Size = new System.Drawing.Size(27, 37);
             this.resizeButton.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.resizeButton.TabIndex = 53;
             this.resizeButton.Text = "⇆";
@@ -292,10 +296,11 @@ namespace HeroesONE_R_GUI
             this.titleBar_ItemCount.ForeColor = System.Drawing.Color.White;
             this.titleBar_ItemCount.IgnoreMouse = false;
             this.titleBar_ItemCount.IgnoreMouseClicks = false;
-            this.titleBar_ItemCount.Location = new System.Drawing.Point(1400, 0);
+            this.titleBar_ItemCount.Location = new System.Drawing.Point(1734, 0);
+            this.titleBar_ItemCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleBar_ItemCount.Name = "titleBar_ItemCount";
-            this.titleBar_ItemCount.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.titleBar_ItemCount.Size = new System.Drawing.Size(136, 30);
+            this.titleBar_ItemCount.Padding = new System.Windows.Forms.Padding(0, 0, 7, 0);
+            this.titleBar_ItemCount.Size = new System.Drawing.Size(181, 37);
             this.titleBar_ItemCount.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.titleBar_ItemCount.TabIndex = 54;
             this.titleBar_ItemCount.Text = "Files: 0";
@@ -351,19 +356,21 @@ namespace HeroesONE_R_GUI
             this.box_FileList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.box_FileList.EnableHeadersVisualStyles = false;
             this.box_FileList.GridColor = System.Drawing.Color.White;
-            this.box_FileList.Location = new System.Drawing.Point(0, 66);
+            this.box_FileList.Location = new System.Drawing.Point(0, 80);
+            this.box_FileList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.box_FileList.MultiSelect = false;
             this.box_FileList.Name = "box_FileList";
             this.box_FileList.ReadOnly = true;
             this.box_FileList.ReorderingEnabled = false;
             this.box_FileList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.box_FileList.RowHeadersVisible = false;
+            this.box_FileList.RowHeadersWidth = 51;
             this.box_FileList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.box_FileList.RowTemplate.Height = 20;
             this.box_FileList.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.box_FileList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.box_FileList.ShowCellToolTips = false;
-            this.box_FileList.Size = new System.Drawing.Size(1556, 788);
+            this.box_FileList.Size = new System.Drawing.Size(1942, 971);
             this.box_FileList.StandardTab = true;
             this.box_FileList.TabIndex = 15;
             this.box_FileList.CustomDragDropEvent += new System.EventHandler<System.Windows.Forms.DragEventArgs>(this.FileList_DragDrop);
@@ -375,6 +382,7 @@ namespace HeroesONE_R_GUI
             this.box_FileList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.box_FileList_KeyUp);
             this.box_FileList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseDown);
             this.box_FileList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseMove);
+            this.box_FileList.MouseUp += new System.Windows.Forms.MouseEventHandler(this.box_FileList_MouseUp);
             // 
             // fileName
             // 
@@ -384,6 +392,7 @@ namespace HeroesONE_R_GUI
             this.fileName.DefaultCellStyle = dataGridViewCellStyle1;
             this.fileName.FillWeight = 70F;
             this.fileName.HeaderText = "File Name";
+            this.fileName.MinimumWidth = 6;
             this.fileName.Name = "fileName";
             this.fileName.ReadOnly = true;
             // 
@@ -395,6 +404,7 @@ namespace HeroesONE_R_GUI
             this.rwVersion.DefaultCellStyle = dataGridViewCellStyle2;
             this.rwVersion.FillWeight = 30F;
             this.rwVersion.HeaderText = "RW Version";
+            this.rwVersion.MinimumWidth = 6;
             this.rwVersion.Name = "rwVersion";
             this.rwVersion.ReadOnly = true;
             // 
@@ -405,8 +415,9 @@ namespace HeroesONE_R_GUI
             this.titleBar_Panel.Controls.Add(this.titleBar_Title);
             this.titleBar_Panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar_Panel.Location = new System.Drawing.Point(0, 0);
+            this.titleBar_Panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleBar_Panel.Name = "titleBar_Panel";
-            this.titleBar_Panel.Size = new System.Drawing.Size(1556, 42);
+            this.titleBar_Panel.Size = new System.Drawing.Size(1942, 52);
             this.titleBar_Panel.TabIndex = 0;
             // 
             // categoryBar_MenuStrip
@@ -419,9 +430,9 @@ namespace HeroesONE_R_GUI
             this.categoryBar_AddFiles,
             this.categoryBar_Actions,
             this.categoryBar_OptionsMenuItem});
-            this.categoryBar_MenuStrip.Location = new System.Drawing.Point(0, 42);
+            this.categoryBar_MenuStrip.Location = new System.Drawing.Point(0, 52);
             this.categoryBar_MenuStrip.Name = "categoryBar_MenuStrip";
-            this.categoryBar_MenuStrip.Size = new System.Drawing.Size(1556, 24);
+            this.categoryBar_MenuStrip.Size = new System.Drawing.Size(1942, 28);
             this.categoryBar_MenuStrip.TabIndex = 1;
             // 
             // categoryBar_FileMenuItem
@@ -434,20 +445,20 @@ namespace HeroesONE_R_GUI
             this.saveShadow060ToolStripMenuItem});
             this.categoryBar_FileMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_FileMenuItem.Name = "categoryBar_FileMenuItem";
-            this.categoryBar_FileMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.categoryBar_FileMenuItem.Size = new System.Drawing.Size(46, 24);
             this.categoryBar_FileMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.newToolStripMenuItem.Text = "New (Ctrl+N)";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.openToolStripMenuItem.Text = "Open (Ctrl+O)";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -456,21 +467,21 @@ namespace HeroesONE_R_GUI
             this.saveToolStripMenuItem.Checked = true;
             this.saveToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.saveToolStripMenuItem.Text = "Save (Heroes)";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveShadow050ToolStripMenuItem
             // 
             this.saveShadow050ToolStripMenuItem.Name = "saveShadow050ToolStripMenuItem";
-            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveShadow050ToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.saveShadow050ToolStripMenuItem.Text = "Save (Shadow 0.50)";
             this.saveShadow050ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow050ToolStripMenuItem_Click);
             // 
             // saveShadow060ToolStripMenuItem
             // 
             this.saveShadow060ToolStripMenuItem.Name = "saveShadow060ToolStripMenuItem";
-            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveShadow060ToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.saveShadow060ToolStripMenuItem.Text = "Save (Shadow 0.60)";
             this.saveShadow060ToolStripMenuItem.Click += new System.EventHandler(this.saveShadow060ToolStripMenuItem_Click);
             // 
@@ -478,7 +489,7 @@ namespace HeroesONE_R_GUI
             // 
             this.categoryBar_ExtractAll.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_ExtractAll.Name = "categoryBar_ExtractAll";
-            this.categoryBar_ExtractAll.Size = new System.Drawing.Size(72, 20);
+            this.categoryBar_ExtractAll.Size = new System.Drawing.Size(90, 24);
             this.categoryBar_ExtractAll.Text = "Extract All";
             this.categoryBar_ExtractAll.Click += new System.EventHandler(this.categoryBar_ExtractAll_Click);
             // 
@@ -486,7 +497,7 @@ namespace HeroesONE_R_GUI
             // 
             this.categoryBar_AddFiles.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_AddFiles.Name = "categoryBar_AddFiles";
-            this.categoryBar_AddFiles.Size = new System.Drawing.Size(67, 20);
+            this.categoryBar_AddFiles.Size = new System.Drawing.Size(84, 24);
             this.categoryBar_AddFiles.Text = "Add Files";
             this.categoryBar_AddFiles.Click += new System.EventHandler(this.categoryBar_AddFiles_Click);
             // 
@@ -497,20 +508,20 @@ namespace HeroesONE_R_GUI
             this.sortByExtensionsShadowToolStripMenuItem});
             this.categoryBar_Actions.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_Actions.Name = "categoryBar_Actions";
-            this.categoryBar_Actions.Size = new System.Drawing.Size(59, 20);
+            this.categoryBar_Actions.Size = new System.Drawing.Size(72, 24);
             this.categoryBar_Actions.Text = "Actions";
             // 
             // batchAction_replaceSelectedForManyToolStripMenuItem
             // 
             this.batchAction_replaceSelectedForManyToolStripMenuItem.Name = "batchAction_replaceSelectedForManyToolStripMenuItem";
-            this.batchAction_replaceSelectedForManyToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.batchAction_replaceSelectedForManyToolStripMenuItem.Size = new System.Drawing.Size(328, 26);
             this.batchAction_replaceSelectedForManyToolStripMenuItem.Text = "Replace Selected for many";
             this.batchAction_replaceSelectedForManyToolStripMenuItem.Click += new System.EventHandler(this.replaceSelectToolStripMenuItem_Click);
             // 
             // sortByExtensionsShadowToolStripMenuItem
             // 
             this.sortByExtensionsShadowToolStripMenuItem.Name = "sortByExtensionsShadowToolStripMenuItem";
-            this.sortByExtensionsShadowToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.sortByExtensionsShadowToolStripMenuItem.Size = new System.Drawing.Size(328, 26);
             this.sortByExtensionsShadowToolStripMenuItem.Text = "Sort by extensions (EXPERIMENTAL)";
             this.sortByExtensionsShadowToolStripMenuItem.Click += new System.EventHandler(this.SortByExtensionsShadowToolStripMenuItem_Click);
             // 
@@ -524,20 +535,20 @@ namespace HeroesONE_R_GUI
             this.filePickerStartsAtOpenedFileToolStripMenuItem});
             this.categoryBar_OptionsMenuItem.ForeColor = System.Drawing.Color.Silver;
             this.categoryBar_OptionsMenuItem.Name = "categoryBar_OptionsMenuItem";
-            this.categoryBar_OptionsMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.categoryBar_OptionsMenuItem.Size = new System.Drawing.Size(75, 24);
             this.categoryBar_OptionsMenuItem.Text = "Options";
             // 
             // setArchiveRWVersionToolStripMenuItem
             // 
             this.setArchiveRWVersionToolStripMenuItem.Name = "setArchiveRWVersionToolStripMenuItem";
-            this.setArchiveRWVersionToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.setArchiveRWVersionToolStripMenuItem.Size = new System.Drawing.Size(302, 26);
             this.setArchiveRWVersionToolStripMenuItem.Text = "Set Archive RW Version";
             this.setArchiveRWVersionToolStripMenuItem.Click += new System.EventHandler(this.setArchiveRWVersionToolStripMenuItem_Click);
             // 
             // setAllFileRWVersionToolStripMenuItem
             // 
             this.setAllFileRWVersionToolStripMenuItem.Name = "setAllFileRWVersionToolStripMenuItem";
-            this.setAllFileRWVersionToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.setAllFileRWVersionToolStripMenuItem.Size = new System.Drawing.Size(302, 26);
             this.setAllFileRWVersionToolStripMenuItem.Text = "Set All File RW Version";
             this.setAllFileRWVersionToolStripMenuItem.Click += new System.EventHandler(this.setAllFileRWVersionToolStripMenuItem_Click);
             // 
@@ -547,7 +558,7 @@ namespace HeroesONE_R_GUI
             this.enableAdaptiveCompressionLevelToolStripMenuItem,
             this.manuallySetCompressionLevelToolStripMenuItem});
             this.compressionSettingsToolStripMenuItem.Name = "compressionSettingsToolStripMenuItem";
-            this.compressionSettingsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.compressionSettingsToolStripMenuItem.Size = new System.Drawing.Size(302, 26);
             this.compressionSettingsToolStripMenuItem.Text = "Compression Settings";
             // 
             // enableAdaptiveCompressionLevelToolStripMenuItem
@@ -556,14 +567,14 @@ namespace HeroesONE_R_GUI
             this.enableAdaptiveCompressionLevelToolStripMenuItem.CheckOnClick = true;
             this.enableAdaptiveCompressionLevelToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.enableAdaptiveCompressionLevelToolStripMenuItem.Name = "enableAdaptiveCompressionLevelToolStripMenuItem";
-            this.enableAdaptiveCompressionLevelToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.enableAdaptiveCompressionLevelToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
             this.enableAdaptiveCompressionLevelToolStripMenuItem.Text = "Enable Adaptive Compression Level";
             this.enableAdaptiveCompressionLevelToolStripMenuItem.CheckStateChanged += new System.EventHandler(this.enableAdaptiveCompressionLevelToolStripMenuItem_CheckStateChanged);
             // 
             // manuallySetCompressionLevelToolStripMenuItem
             // 
             this.manuallySetCompressionLevelToolStripMenuItem.Name = "manuallySetCompressionLevelToolStripMenuItem";
-            this.manuallySetCompressionLevelToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.manuallySetCompressionLevelToolStripMenuItem.Size = new System.Drawing.Size(329, 26);
             this.manuallySetCompressionLevelToolStripMenuItem.Text = "Manually Set Compression Level";
             this.manuallySetCompressionLevelToolStripMenuItem.Click += new System.EventHandler(this.manuallySetCompressionLevelToolStripMenuItem_Click);
             // 
@@ -571,7 +582,7 @@ namespace HeroesONE_R_GUI
             // 
             this.hideWarningsToolStripMenuItem.CheckOnClick = true;
             this.hideWarningsToolStripMenuItem.Name = "hideWarningsToolStripMenuItem";
-            this.hideWarningsToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.hideWarningsToolStripMenuItem.Size = new System.Drawing.Size(302, 26);
             this.hideWarningsToolStripMenuItem.Text = "Hide Warnings";
             this.hideWarningsToolStripMenuItem.Click += new System.EventHandler(this.hideWarningsToolStripMenuItem_Click);
             // 
@@ -579,7 +590,7 @@ namespace HeroesONE_R_GUI
             // 
             this.filePickerStartsAtOpenedFileToolStripMenuItem.CheckOnClick = true;
             this.filePickerStartsAtOpenedFileToolStripMenuItem.Name = "filePickerStartsAtOpenedFileToolStripMenuItem";
-            this.filePickerStartsAtOpenedFileToolStripMenuItem.Size = new System.Drawing.Size(240, 22);
+            this.filePickerStartsAtOpenedFileToolStripMenuItem.Size = new System.Drawing.Size(302, 26);
             this.filePickerStartsAtOpenedFileToolStripMenuItem.Text = "File Picker Starts At Opened File";
             this.filePickerStartsAtOpenedFileToolStripMenuItem.Click += new System.EventHandler(this.filePickerStartsAtOpenedFileToolStripMenuItem_Click);
             // 
@@ -593,40 +604,40 @@ namespace HeroesONE_R_GUI
             this.replaceToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.box_MenuStrip.Name = "box_MenuStrip";
-            this.box_MenuStrip.Size = new System.Drawing.Size(178, 114);
+            this.box_MenuStrip.Size = new System.Drawing.Size(208, 124);
             // 
             // changeRWVersionToolStripMenuItem
             // 
             this.changeRWVersionToolStripMenuItem.Name = "changeRWVersionToolStripMenuItem";
-            this.changeRWVersionToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.changeRWVersionToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
             this.changeRWVersionToolStripMenuItem.Text = "Change RW Version";
             this.changeRWVersionToolStripMenuItem.Click += new System.EventHandler(this.changeRWVersionToolStripMenuItem_Click);
             // 
             // extractToolStripMenuItem
             // 
             this.extractToolStripMenuItem.Name = "extractToolStripMenuItem";
-            this.extractToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.extractToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
             this.extractToolStripMenuItem.Text = "Extract File (Ctrl+E)";
             this.extractToolStripMenuItem.Click += new System.EventHandler(this.extractToolStripMenuItem_Click);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
             this.renameToolStripMenuItem.Text = "Rename (F2)";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
             this.replaceToolStripMenuItem.Text = "Replace (Ctrl+R)";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(207, 24);
             this.deleteToolStripMenuItem.Text = "Delete (Del)";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -637,17 +648,18 @@ namespace HeroesONE_R_GUI
             this.titleBar_StatusBar.Controls.Add(this.resizeButton);
             this.titleBar_StatusBar.Controls.Add(this.titleBar_RWVersion);
             this.titleBar_StatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.titleBar_StatusBar.Location = new System.Drawing.Point(0, 854);
+            this.titleBar_StatusBar.Location = new System.Drawing.Point(0, 1051);
+            this.titleBar_StatusBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titleBar_StatusBar.Name = "titleBar_StatusBar";
-            this.titleBar_StatusBar.Size = new System.Drawing.Size(1556, 30);
+            this.titleBar_StatusBar.Size = new System.Drawing.Size(1942, 37);
             this.titleBar_StatusBar.TabIndex = 16;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.ClientSize = new System.Drawing.Size(1556, 884);
+            this.ClientSize = new System.Drawing.Size(1942, 1088);
             this.Controls.Add(this.box_FileList);
             this.Controls.Add(this.categoryBar_MenuStrip);
             this.Controls.Add(this.titleBar_Panel);
@@ -656,6 +668,7 @@ namespace HeroesONE_R_GUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.categoryBar_MenuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainWindow";
             this.Text = "HeroesONE Reloaded";
             this.Load += new System.EventHandler(this.MainWindow_Load);

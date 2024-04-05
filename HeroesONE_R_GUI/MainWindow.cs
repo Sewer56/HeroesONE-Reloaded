@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HeroesONE_R.Structures;
 using HeroesONE_R.Structures.Common;
-using HeroesONE_R.Structures.SonicHeroes.ONE_Substructures;
 using HeroesONE_R.Structures.Substructures;
 using HeroesONE_R_GUI.Dialogs;
 using HeroesONE_R_GUI.Misc;
@@ -891,6 +890,8 @@ namespace HeroesONE_R_GUI
 
         private void box_FileList_DragLeave(object sender, EventArgs e)
         {
+            if (Archive.Files.Count == 0)
+                return;
             string outfile = Path.Combine(Path.GetTempPath(), Archive.Files[box_FileList.SelectedRows[0].Index].Name);
             File.WriteAllBytes(outfile, Archive.Files[box_FileList.SelectedRows[0].Index].DecompressThis());
             DoDragDrop(new DataObject(DataFormats.FileDrop, new string[] { outfile }), DragDropEffects.Copy);
@@ -1015,6 +1016,7 @@ namespace HeroesONE_R_GUI
             "MTP",
             "DMA",
             "PTP",
+            "PTB",
             "BDT",
             "ADB",
             "GNCP"

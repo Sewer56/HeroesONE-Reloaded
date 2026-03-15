@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> _Archived on March 15, 2026, This project is no longer actively maintained._
+> 
+> A cross-platform successor to the GUI is available [ShadowONE](https://github.com/ShadowTheHedgehogHacking/ShadowONE)
+
 # HeroesONE Reloaded
 
 ![Example Image](https://raw.githubusercontent.com/Sewer56/HeroesONE-Reloaded/master/Images/program_example.png)
